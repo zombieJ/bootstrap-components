@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Bootstrap Component Sample</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!-- jQuery -->
+		<script src="assets/jquery.js"></script>
+		<!-- Bootstrap -->
+		<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+		<link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+		<!-- src -->
+		<script src="../src/dialog/bootstrap-dialog.js"></script>
+	</head>
+	<body>
+		<script>
+			$(document).ready(function(){
+				$("#dlg").click(function(){
+					var $content = $('#sample').html();
+					var modal = $.dialog({
+						title: "Sample Title",
+						content: $content,
+						show: function(modal) {
+							$btn = modal.find('#dlg2');
+							$btn.click(function(){
+								$.dialog({
+									title: "Sub Dialog",
+									content: "This is sub dialog",
+								});
+							});
+						},
+					});
+				});
+			});
+		</script>
+		<!-- Button to trigger modal -->
+		<a id="dlg" class="btn">show</a>
+		
+		<div id="sample" class="hide">
+			<p>This is a sample!</p>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<a id="dlg2" class="btn">show2</a>
+		</div>
+	</body>
+</html>
