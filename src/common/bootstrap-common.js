@@ -1,0 +1,1 @@
+$.extend({_bc: new Object()});

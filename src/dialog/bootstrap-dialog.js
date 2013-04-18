@@ -1,5 +1,10 @@
+// init env
+$._bc.dialog = new Object();
+$._bc.dialog.z_index = 1051;
+
+// init function
 $.extend({
-	dialog:function(options){
+	dialog:function(options, callback){
 		if(options == null) options = new Object();
 		var $modal = $('<div class="modal hide fade"></div>');
 		var $header = $('<div class="modal-header"></div>');
@@ -18,12 +23,26 @@ $.extend({
 
 		$modal.appendTo("body");
 
-		if(options.show != null) {
-			options.show($modal);
+		if(callback != null) {
+			var mcall = callback;
+			$modal.each(function(){
+				mcall.call($(this));
+			});
 		}
+
+		// show dialog with options
 		$modal.modal(options.options);
+
+		// move modal-backdrop to top
+		var $back = $("body div.modal-backdrop:last");
+		$back.css("z-index", $._bc.dialog.z_index);
+		$modal.css("z-index", $._bc.dialog.z_index+1);
+		$._bc.dialog.z_index += 2;
+
+		// when show hidden, remove it
 		$modal.on('hidden', function () {
 			$(this).remove();
+			$._bc.dialog.z_index -= 2;
 		});
 		return $modal;
 	}

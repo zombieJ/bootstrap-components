@@ -9,6 +9,7 @@
 		<script src="assets/bootstrap/js/bootstrap.min.js"></script>
 		<link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
 		<!-- src -->
+		<script src="../src/common/bootstrap-common.js"></script>
 		<script src="../src/dialog/bootstrap-dialog.js"></script>
 	</head>
 	<body>
@@ -19,15 +20,15 @@
 					var modal = $.dialog({
 						title: "Sample Title",
 						content: $content,
-						show: function(modal) {
-							$btn = modal.find('#dlg2');
-							$btn.click(function(){
-								$.dialog({
-									title: "Sub Dialog",
-									content: "This is sub dialog",
-								});
+					},
+					function(){		// when create modal, it can call $(this) get the modal.
+						$btn = $(this).find('#dlg2');
+						$btn.click(function(){
+							$.dialog({
+								title: "Sub Dialog",
+								content: "This is sub dialog",
 							});
-						},
+						});
 					});
 				});
 			});
