@@ -1,0 +1,41 @@
+.timepicker {
+	width: 234px;
+}
+
+.timepicker .timepicker-head {
+	text-align: center;
+	position: relative;
+}
+
+.timepicker .timepicker-head h5 {
+	margin: 0;
+	padding: 3px 0 3px 0;
+	display: inline-block;
+}
+
+.timepicker .timepicker-head .timepicker-month-left,
+.timepicker .timepicker-head .timepicker-month-right {
+	width: 26px;
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.timepicker .timepicker-head .timepicker-month-left {
+	position: absolute;
+	left: 0;
+}
+
+.timepicker .timepicker-head .timepicker-month-right {
+	position: absolute;
+	right: 0;
+}
+
+.timepicker .timepicker-body {
+	margin-top: 0px;
+}
+
+.timepicker .timepicker-body .btn {
+	padding: 3px 0 3px 0;
+	width: 30px;
+	margin-top: 5px;
+}

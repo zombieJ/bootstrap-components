@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Bootstrap Component Sample</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!-- jQuery -->
+		<script src="assets/jquery.js"></script>
+		<!-- Bootstrap -->
+		<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+		<link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+		<!-- src -->
+		<script src="../src/common/bootstrap-common.js"></script>
+		<script src="../src/timepicker/bootstrap-timepicker.js"></script>
+		<link href="../src/timepicker/bootstrap-timepicker.css" rel="stylesheet" media="screen">
+	</head>
+	<body>
+		<script>
+			$(document).ready(function(){
+				$("#timepicker").timepicker();
+			});
+		</script>
+		<!-- Button to trigger modal -->
+		<div id="timepicker" class="input-append">
+			<input class="timepicker span2" id="appendedInput" type="text">
+			<button class="btn" data-toggle="timepicker" href="#"><i class="icon-time"></i></button>
+		</div>
+
+		<div class='timepicker modal'>
+			<div class="timepicker-head">
+				<button class="btn btn-small timepicker-month-left"><i class="icon-chevron-left"></i></button>
+				<h5>2013 - 04</h5>
+				<button class="btn btn-small timepicker-month-right"><i class="icon-chevron-right"></i></button>
+			</div>
+			<div class="timepicker-body">
+				<button class="btn">1</button>
+				<button class="btn">2</button>
+				<button class="btn">3</button>
+				<button class="btn">4</button>
+				<button class="btn">5</button>
+				<button class="btn">6</button>
+				<button class="btn">7</button>
+				<button class="btn">8</button>
+				<button class="btn">9</button>
+				<button class="btn">10</button>
+				<button class="btn">11</button>
+				<button class="btn">12</button>
+			</div>
+		</div>
+	</body>
+</html>
