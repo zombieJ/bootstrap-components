@@ -12,10 +12,10 @@ $._bc.vals.datepicker.index = 1;
 
 // init function
 $.fn.extend({
-	datepicker:function(options, callback){
+	datepicker:function(options){
 		// get options
 		var my = $(this);
-		var vars = $._bc.vars(options, callback);
+		var vars = $._bc.vars(options);
 		var _options = vars.options;
 
 		var _index = $._bc.vals.datepicker.index;

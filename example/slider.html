@@ -15,10 +15,13 @@
 
 		<script>
 			$(document).ready(function(){
+				$("#slider_demo_default_with_value").slider({value: 0.5});
+
+				$("#slider_demo_range_with_value").slider({value: 80});
 			});
 		</script>
 		<style>
-			#slider_demo {
+			.progress {
 				width: 80%;
 				margin: auto;
 			}
@@ -26,11 +29,19 @@
 	</head>
 	<body>
 		<br />
-		<div id="slider_demo" class="progress">
+		<div id="slider_demo_default" class="progress">
 			<button type="button" class="btn btn-primary slider" data-toggle="slider"></button>
 		</div>
-		<br /><br /><br /><br /><br />
-		<div id="slider_demo" class="progress">
+		<br /><br />
+		<div id="slider_demo_default_with_value" class="progress">
+			<button type="button" class="btn btn-primary slider" data-toggle="slider"></button>
+		</div>
+		<br /><br />
+		<div id="slider_demo_range" class="progress">
+			<button type="button" class="btn btn-primary slider" data-toggle="slider" data-min="0" data-max="100"></button>
+		</div>
+		<br /><br />
+		<div id="slider_demo_range_with_value" class="progress">
 			<button type="button" class="btn btn-primary slider" data-toggle="slider" data-min="0" data-max="100"></button>
 		</div>
 	</body>

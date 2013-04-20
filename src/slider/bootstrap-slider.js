@@ -1,4 +1,28 @@
 // init function
+$.fn.extend({
+	slider:function(options){
+		// get options
+		var vars = $._bc.vars(options);
+		var _options = vars.options;
+
+		var value = _options.value;
+		var $process = $(this);
+		var $spiner = $process.find(".slider[data-toggle='slider']");
+		var _total_width = $process.outerWidth() - $spiner.outerWidth();
+
+		var _min = parseInt($spiner.attr("data-min"), 10);
+		var _max = parseInt($spiner.attr("data-max"), 10);
+
+		if(!isNaN(_min) && !isNaN(_max) && _min < _max) {
+			$spiner.attr("data-value", value);
+			$spiner.css("margin-left", (value / (_max - _min) * _total_width) + "px");
+		} else {
+			$spiner.attr("data-value", (value * 100) + "%");
+			$spiner.css("margin-left", (_total_width * value) + "px");
+		}
+	}
+});
+
 !function ($) {
 	var mouse_down = false;
 	var process;
