@@ -39,9 +39,11 @@ $.fn.extend({
 		}
 		function formatDate(date, outer) {		//get string as date
 			var str_date = "";
-			if(outer == null || (enable_datepicker && outer == true))
-				str_date = date.getFullYear() + "-" + dd(date.getMonth()+1) + "-" + dd(date.getDate()) + " ";
-			if(outer == null || (enable_timepicker && outer == true))
+			var show_date = outer == null || (enable_datepicker && outer == true);
+			var show_time = outer == null || (enable_timepicker && outer == true);
+			if(show_date)
+				str_date = date.getFullYear() + "-" + dd(date.getMonth()+1) + "-" + dd(date.getDate()) + (show_time ? " " : "");
+			if(show_time)
 				str_date += dd(date.getHours()) + ":" + dd(date.getMinutes()) + ":" + dd(date.getSeconds());
 			return str_date;
 		}
@@ -66,8 +68,6 @@ $.fn.extend({
 
 		var $btn = $(this).find("[data-toggle='datepicker']");
 		$btn.click(function(event){
-			event.stopPropagation();
-
 			// get current date
 			var _date = getDate($input.val());
 
@@ -235,10 +235,16 @@ $.fn.extend({
 				}
 
 				// remove when click body content
-				$datepicker.add(my).click(function(event){
+				$datepicker.click(function(event){
 					event.stopPropagation();
 				});
 				$(document).bind('click.datepicker' + _index, function(event){
+					var _stop = my.data("stop");
+					my.data("stop", null);
+
+					if(_stop)
+						return;
+
 					$datepicker.remove();
 					my.data("datepicker", null);
 					$input.val(formatDate(getDate(genDate()), true));
@@ -246,5 +252,15 @@ $.fn.extend({
 				});
 			}
 		});
+
+		my.click(function(event){
+			hideView();
+		});
+		function hideView() {
+			if(my.data("datepicker") == true) {
+				my.data("stop", true);
+			} else {
+			}
+		}
 	}
 });
