@@ -24,6 +24,8 @@
 				$("#datepicker_time").datepicker({
 					target: "timer",
 				});
+
+				$("#datepicker_nobutton").datepicker();
 			});
 		</script>
 	</head>
@@ -41,6 +43,10 @@
 		<div id="datepicker_time" class="input-append">
 			<input class="datepicker" id="appendedInput" type="text" style="width: 140px;">
 			<button class="btn" data-toggle="datepicker" href="#"><i class="icon-time"></i></button>
+		</div>
+
+		<div id="datepicker_nobutton">
+			<input class="datepicker" id="appendedInput" type="text" style="width: 140px;" data-toggle="datepicker">
 		</div>
 	</body>
 </html>
