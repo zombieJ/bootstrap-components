@@ -1,6 +1,6 @@
 // init env
-$._bc.dialog = new Object();
-$._bc.dialog.z_index = 1051;
+$._bc.vals.dialog = new Object();
+$._bc.vals.dialog.z_index = 1051;
 
 // init function
 $.extend({
@@ -35,14 +35,14 @@ $.extend({
 
 		// move modal-backdrop to top
 		var $back = $("body div.modal-backdrop:last");
-		$back.css("z-index", $._bc.dialog.z_index);
-		$modal.css("z-index", $._bc.dialog.z_index+1);
-		$._bc.dialog.z_index += 2;
+		$back.css("z-index", $._bc.vals.dialog.z_index);
+		$modal.css("z-index", $._bc.vals.dialog.z_index+1);
+		$._bc.vals.dialog.z_index += 2;
 
 		// when show hidden, remove it
 		$modal.on('hidden', function () {
 			$(this).remove();
-			$._bc.dialog.z_index -= 2;
+			$._bc.vals.dialog.z_index -= 2;
 		});
 		return $modal;
 	}
