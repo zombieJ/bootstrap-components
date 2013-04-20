@@ -19,10 +19,19 @@
 
 		var _tgt_width = tgt.outerWidth();
 		var _process_width = process.outerWidth();
+		var _total_width = _process_width - _tgt_width;
 		var _curLeft = event.pageX - process.offset().left - _innerLeft;
 		if(_curLeft < 0) _curLeft = 0;
-		if(_curLeft > _process_width - _tgt_width) _curLeft = _process_width - _tgt_width;
+		if(_curLeft > _total_width) _curLeft = _total_width;
 		tgt.css("margin-left", _curLeft + "px");
+
+		var _min = parseInt(tgt.attr("data-min"), 10);
+		var _max = parseInt(tgt.attr("data-max"), 10);
+		if(!isNaN(_min) && !isNaN(_max) && _min < _max) {
+			tgt.attr("data-value", _curLeft / _total_width * (_max - _min));
+		} else {
+			tgt.attr("data-value", (_curLeft / _total_width * 100) + "%");
+		}
 	});
 
 	// mouse up
