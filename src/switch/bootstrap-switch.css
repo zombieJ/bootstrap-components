@@ -6,6 +6,7 @@
 	height: 28px;
 	border-radius: 30px;
 	position: relative;
+	filter: none;
 
 	border: 1px solid #CCC;
 	box-shadow: inset 2px 3px 6px rgba(0,0,0,0.3);
