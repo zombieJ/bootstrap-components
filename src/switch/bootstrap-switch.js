@@ -39,6 +39,7 @@ $.fn.extend({
 			var _on = !my.prop("checked");
 			my.prop("checked", _on);
 			refreshStatus();
+			my.change();
 		});
 	}
 });

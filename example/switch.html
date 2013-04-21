@@ -16,6 +16,10 @@
 		<script>
 			$(document).ready(function(){
 				$("#switch_demo").switch();
+
+				$("#switch_demo").change(function(){
+					$("input[type='text']").val($(this).prop('checked'));
+				});
 			});
 		</script>
 		<style>
@@ -26,6 +30,6 @@
 	</head>
 	<body>
 		<input id="switch_demo" type="checkbox" />
-		<input type="text" placeholder="Type something¡­">
+		<input type="text">
 	</body>
 </html>
