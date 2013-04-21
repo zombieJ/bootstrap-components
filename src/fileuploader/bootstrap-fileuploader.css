@@ -1,0 +1,8 @@
+label.fileuploader span.tips {
+	margin-left: 10px;
+}
+
+.fileuploader-items .fileuploader-item button.close {
+	float: none;
+	margin-right: 5px;
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Bootstrap Component Sample</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!-- jQuery -->
+		<script src="assets/jquery.js"></script>
+		<!-- Bootstrap -->
+		<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+		<link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+		<!-- src -->
+		<script src="../src/common/bootstrap-common.js"></script>
+		<script src="../src/fileuploader/bootstrap-fileuploader.js"></script>
+		<link href="../src/fileuploader/bootstrap-fileuploader.css" rel="stylesheet" media="screen">
+
+		<script>
+			$(document).ready(function(){
+				$("#s_file").fileuploader();
+
+				$("#m_file").fileuploader({
+					type: "muti",
+				});
+			});
+		</script>
+		<style>
+			body {
+				padding: 50px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Single file</h1>
+		<input id="s_file" type="file" name="s_file" />
+		<h1>Muti file</h1>
+		<input id="m_file" type="file" name="m_file" />
+	</body>
+</html>
