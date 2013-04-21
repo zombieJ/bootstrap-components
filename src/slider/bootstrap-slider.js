@@ -56,6 +56,9 @@ $.fn.extend({
 		} else {
 			tgt.attr("data-value", (_curLeft / _total_width * 100) + "%");
 		}
+
+		// raise change event
+		tgt.change();
 	});
 
 	// mouse up

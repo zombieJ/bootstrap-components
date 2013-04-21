@@ -18,6 +18,10 @@
 				$("#slider_demo_default_with_value").slider({value: 0.5});
 
 				$("#slider_demo_range_with_value").slider({value: 80});
+
+				$("#slider_demo_range_with_value .slider").change(function(){
+					$("#lbl_show").html($(this).attr("data-value"));
+				});
 			});
 		</script>
 		<style>
@@ -44,5 +48,6 @@
 		<div id="slider_demo_range_with_value" class="progress">
 			<button type="button" class="btn btn-primary slider" data-toggle="slider" data-min="0" data-max="100"></button>
 		</div>
+		<label id="lbl_show"></label>
 	</body>
 </html>
