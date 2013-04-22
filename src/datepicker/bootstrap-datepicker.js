@@ -52,7 +52,7 @@ $.fn.extend({
 			var _date;
 			try {
 				if(str.match(/^\d+:\d+:\d+/)) str = "1990-09-03 " + str;
-				_date = new Date(str);
+				_date = new Date(Date.parse(str.replace(/-/g, "/")));
 				if(_date == "Invalid Date" || _date == null)
 					return date;
 				else
@@ -68,6 +68,9 @@ $.fn.extend({
 
 		var $btn = $(this).find("[data-toggle='datepicker']");
 		$btn.click(function(event){
+			// record pre date
+			var _pre_date = $input.val();
+
 			// get current date
 			var _date = getDate($input.val());
 
@@ -83,9 +86,9 @@ $.fn.extend({
 				// date model
 				var $date = $("<div class='datepicker-date'>");
 				var $date_head  = $("<div class='datepicker-head'>");
-				var $date_left = $("<button class='btn btn-warning btn-small datepicker-month-left'><i class='icon-chevron-left  icon-white'></i></button>");
+				var $date_left = $("<button class='btn btn-primary btn-small datepicker-month-left'><i class='icon-chevron-left  icon-white'></i></button>");
 				var $date_content = $("<h5></h5>");
-				var $date_right = $("<button class='btn btn-warning btn-small datepicker-month-right'><i class='icon-chevron-right  icon-white'></i></button>");
+				var $date_right = $("<button class='btn btn-primary btn-small datepicker-month-right'><i class='icon-chevron-right  icon-white'></i></button>");
 				var $date_body = $("<div class='datepicker-body'>");
 				var $date_days = $("<div class='datepicker-days'>");
 				$date_days.append("<span>Sun</span>");
@@ -111,7 +114,7 @@ $.fn.extend({
 				$date_right.data("m", 1);
 				$date_left.add($date_right).click(function(){
 					var value = $(this).data("m");
-					var _mdate = new Date(formatDate(_date));
+					var _mdate = new Date(getDate(genDate()));
 					_mdate.setMonth(_mdate.getMonth() + value);
 					if(value == -1 && _date.getMonth() == _mdate.getMonth()) {
 						_mdate.setDate(0);
@@ -124,12 +127,12 @@ $.fn.extend({
 
 				function setDateView() {
 					function getStartDay(date) {
-						var _date = new Date(formatDate(date));
+						var _date = new Date(getDate(formatDate(date)));
 						_date.setDate(1);
 						return _date.getDay();
 					}
 					function getTotalDays(date) {
-						var _date = new Date(formatDate(date));
+						var _date = new Date(getDate(formatDate(date)));
 						_date.setDate(1);
 						_date.setMonth(_date.getMonth() + 1);
 						_date.setDate(0);
@@ -152,13 +155,13 @@ $.fn.extend({
 
 						// set target date as mark
 						if(i == _date.getDate()) {
-							$btn.addClass("btn-primary");
+							$btn.addClass("btn-warning");
 						}
 
 						// click to reset date
 						$btn.click(function(){
-							$date_dates.find("button").removeClass("btn-primary");
-							$(this).addClass("btn-primary");
+							$date_dates.find("button").removeClass("btn-warning");
+							$(this).addClass("btn-warning");
 							_date = new Date(genDate());
 						});
 					}
@@ -229,7 +232,7 @@ $.fn.extend({
 
 				// function gen date with UI view
 				function genDate() {
-					var str = $date_content.html()+"-"+dd($date_body.find(".btn-primary").html());
+					var str = $date_content.html()+"-"+dd($date_body.find(".btn-warning").html());
 					str += " " + dd($hour.find("input").val()) + ":" + dd($minute.find("input").val()) + ":" + dd($second.find("input").val());
 					return str;
 				}
@@ -249,6 +252,9 @@ $.fn.extend({
 					my.data("datepicker", null);
 					$input.val(formatDate(getDate(genDate()), true));
 					$(document).unbind('click.datepicker' + _index);
+
+					if(_pre_date != $input.val())
+						$input.change();
 				});
 			}
 		});
