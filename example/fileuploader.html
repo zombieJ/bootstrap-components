@@ -19,6 +19,7 @@
 
 				$("#m_file").fileuploader({
 					type: "muti",
+					max: 2,
 				});
 			});
 		</script>
@@ -30,8 +31,14 @@
 	</head>
 	<body>
 		<h1>Single file</h1>
-		<input id="s_file" type="file" name="s_file" />
+		<form action="fileuploader.php" method="post" enctype ="multipart/form-data">
+			<input id="s_file" type="file" name="s_file" />
+			<input type='submit' class='btn' />
+		</form>
 		<h1>Muti file</h1>
-		<input id="m_file" type="file" name="m_file" />
+		<form action="fileuploader.php" method="post" enctype ="multipart/form-data">
+			<input id="m_file" type="file" name="m_file[]" />
+			<input type='submit' class='btn' />
+		</form>
 	</body>
 </html>
