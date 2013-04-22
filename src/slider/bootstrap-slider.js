@@ -14,10 +14,10 @@ $.fn.extend({
 		var _max = parseInt($spiner.attr("data-max"), 10);
 
 		if(!isNaN(_min) && !isNaN(_max) && _min < _max) {
-			$spiner.attr("data-value", value);
+			$spiner.val(value);
 			$spiner.css("margin-left", (value / (_max - _min) * _total_width) + "px");
 		} else {
-			$spiner.attr("data-value", (value * 100) + "%");
+			$spiner.val((value * 100) + "%");
 			$spiner.css("margin-left", (_total_width * value) + "px");
 		}
 	}
@@ -52,9 +52,9 @@ $.fn.extend({
 		var _min = parseInt(tgt.attr("data-min"), 10);
 		var _max = parseInt(tgt.attr("data-max"), 10);
 		if(!isNaN(_min) && !isNaN(_max) && _min < _max) {
-			tgt.attr("data-value", _curLeft / _total_width * (_max - _min));
+			tgt.val(_curLeft / _total_width * (_max - _min));
 		} else {
-			tgt.attr("data-value", (_curLeft / _total_width * 100) + "%");
+			tgt.val((_curLeft / _total_width * 100) + "%");
 		}
 
 		// raise change event
