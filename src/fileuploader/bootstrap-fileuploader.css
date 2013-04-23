@@ -1,8 +1,22 @@
-label.fileuploader span.tips {
+.fileuploader {
+	position: relative;
+}
+
+.fileuploader.ie label.fileuploader-region {
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+
+.fileuploader label.fileuploader-region .fileuploader-ori {
+	opacity: 0.0;
+}
+
+.fileuploader label.fileuploader-region span.tips {
 	margin-left: 10px;
 }
 
-.fileuploader-items .fileuploader-item button.close {
+.fileuploader .fileuploader-items .fileuploader-item button.close {
 	float: none;
 	margin-right: 5px;
 }
