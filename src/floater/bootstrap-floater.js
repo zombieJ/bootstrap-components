@@ -7,7 +7,8 @@ $.fn.extend({
 		var _callback = vars.callback;
 
 		var my = $(this);
-		var $tgt = $($._bc.get(_options, "target", document));
+		//var $tgt = $($._bc.get(_options, "target", document));
+		var $tgt = $(document);
 
 		var my_fake = $("<div>");
 		my_fake.outerHeight(my.outerHeight());
@@ -15,7 +16,7 @@ $.fn.extend({
 		my_fake.hide();
 
 		$tgt.scroll(function(){
-			var pos = my.position();
+			var pos = my.offset();
 
 			if(my.css("position") == "static") {
 				my.data("bootstrapcomponent_floater_pos", pos);
