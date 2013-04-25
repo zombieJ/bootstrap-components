@@ -16,24 +16,28 @@
 		<script>
 			$(document).ready(function(){
 				$("#floater1").floater();
-
 				$("#floater2").floater();
-
 				$("#floater3").floater();
 
-				$("#floater4").floater();
+				$("#floater_1").floater();
+				$("#floater_2").floater({after: "#floater_1"});
+				$("#floater_3").floater({after: "#floater_2"});
 			});
 		</script>
 	</head>
 	<body>
 		<button id="floater1" class="btn btn-primary">Floater</button>
 		<div style="height: 100px; background: #F4F4F4"></div>
-		<button id="floater2" class="btn btn-primary" style="margin-left: 100px;">Floater</button>
-		<div style="height: 800px; background: #A4A4F4; padding: 50px 50px 50px 200px;">
-			<button id="floater3" class="btn btn-info" style="z-index: 100;">Floater</button>
-			<div id="tgt3" style="height: 200px; background: white; overflow-y: scroll; position:relative;">
-				<button id="floater4" class="btn btn-success" style="margin-left: 100px;">Floater</button>
-				<div  style="height: 300px; background: #FFFFA4;"></div>
+		<button id="floater2" class="btn btn-warning" style="margin-left: 100px;">Floater</button>
+		<div style="background: #A4A4F4; padding: 50px 50px 50px 200px;">
+			<button id="floater3" class="btn btn-info" style="z-index: 100; margin-left:20px;">Floater</button>
+			<div id="tgt3" style="height: 1200px; background: white; position:relative;">
+				<button id="floater_1" class="btn btn-success" style="margin-left: 100px;">Floater</button>
+				<div style="height: 100px; background: #FFA4FF;"></div>
+				<button id="floater_2" class="btn btn-danger" style="margin-left: 100px;">Floater</button>
+				<div style="height: 100px; background: #FFFFA4;"></div>
+				<button id="floater_3" class="btn btn-inverse" style="margin-left: 100px;">Floater</button>
+				<div  style="height: 100px; background: #A4FFA4;"></div>
 			</div>
 		</div>
 	</body>

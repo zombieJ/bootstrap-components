@@ -1,3 +1,7 @@
+/* options:
+	type:		after				float after target element, default null
+*/
+
 // init function
 $.fn.extend({
 	floater:function(options, callback){
@@ -7,11 +11,18 @@ $.fn.extend({
 		var _callback = vars.callback;
 
 		var my = $(this);
-		//var $tgt = $($._bc.get(_options, "target", document));
+		var $after = $._bc.get(_options, "after", null);
 		var $tgt = $(document);
 
-		var my_fake = $("<div>");
+		if(my.length == 0) return;
+
+		if($after != null) $after = $($after);
+
+		var my_fake = $("<span>");
+		my_fake.css("display", my.css("display"));my_fake.css("zoom", "1");
+		my_fake.css("margin", my.css("margin"));
 		my_fake.outerHeight(my.outerHeight());
+		my_fake.outerWidth(my.outerWidth());
 		my_fake.insertAfter(my);
 		my_fake.hide();
 
@@ -24,13 +35,25 @@ $.fn.extend({
 				pos = my.data("bootstrapcomponent_floater_pos");
 			}
 
-			if($(this).scrollTop() > pos.top) {
-				my_fake.show();
-				my.addClass("floater");
-				my.css("top", "0");
+			if($after == null) {
+				if($(this).scrollTop() > pos.top) {
+					my_fake.show();
+					my.addClass("floater");
+					my.css("top", "0");
+				} else {
+					my_fake.hide();
+					my.removeClass("floater");
+				}
 			} else {
-				my_fake.hide();
-				my.removeClass("floater");
+				var _top = $after.offset().top + $after.outerHeight();
+				if(_top > pos.top) {
+					my_fake.show();
+					my.addClass("floater");
+					my.css("top", (_top - $(this).scrollTop()) + "px");
+				} else {
+					my_fake.hide();
+					my.removeClass("floater");
+				}
 			}
 		});
 	}
