@@ -7,8 +7,10 @@ $._bc.vars = function(options, callback){
 	var vars = new Object();
 	if(typeof(options) == 'object') {
 		vars.options = options;
-	} else if(typeof(options) == 'object') {
+	} else if(typeof(options) == 'function') {
 		vars.callback = options;
+	} else if(typeof(options) == 'string') {
+		vars.key = options;
 	}
 	if(typeof(callback) == 'function') {
 		vars.callback = callback;

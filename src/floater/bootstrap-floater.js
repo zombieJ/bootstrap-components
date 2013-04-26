@@ -1,5 +1,5 @@
 /* options:
-	type:		after				float after target element, default null
+	after:		[element]			float after target element, default null
 */
 
 // init function

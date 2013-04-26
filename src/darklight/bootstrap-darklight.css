@@ -1,0 +1,8 @@
+.darklight-backdrop {
+	z-index: 5000;
+}
+
+.darklight-top {
+	z-index: 5001;
+	position: absolute;
+}
