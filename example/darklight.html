@@ -16,11 +16,14 @@
 		<script>
 			$(document).ready(function(){
 				$("#inputEmail").darklight({event: "keyup"}, function(){
-					if($(this).val() == "email") {
-						return true;
-					}
+					if($(this).val() == "email") return true;
 					return false;
-				});
+				})
+				.nextDarklight("#inputPassword", {event: "keyup"}, function(){
+					if($(this).val() == "pass") return true;
+					return false;
+				})
+				.nextDarklight("#inputSubmit");
 			});
 		</script>
 	</head>
@@ -57,7 +60,7 @@
 						</div>
 						<div class="control-group">
 							<div class="controls">
-								<button class="btn btn-primary">Sign in</button>
+								<button id="inputSubmit" class="btn btn-primary">Sign in</button>
 							</div>
 						</div>
 					</div>
