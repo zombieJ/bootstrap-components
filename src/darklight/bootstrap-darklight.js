@@ -3,6 +3,7 @@
 options:
 	backdrop:		static(default)		specify static for a backdrop which doesn't close the modal on click.
 					true				enable close the modal on click backdrop.
+	focus:			boolean				default is true. When show the target element as darklight, target element will focus
 	event:			[event]				String: when element call the target function, dark background will hide.
 										default is "click" event, it will auto close.
 	start:			boolean				default is null, false to prevent show right now.
@@ -28,6 +29,7 @@ $.fn.extend({
 		var _backdrop = $._bc.get(_options, "backdrop", "static");
 		var _event = $._bc.get(_options, "event", "click");
 		var _start = _options.start;
+		var _focus = $._bc.get(_options, "focus", true);
 
 		if(_callback == null) _callback = function() {return true;}
 
@@ -35,7 +37,18 @@ $.fn.extend({
 		var $next = null;
 		var $dark = $._bc.vals.darklight.darkdrop;
 
-		if(_start == null) {
+		my.nextDarklight = function(obj, options, callback){
+			var $_next = $(obj);
+			if(options == null) options = new Object();
+			options.start = false;
+			$next = $_next.darklight(options, callback);
+
+			return $next;
+		}
+
+		my.showDarklight = function() {
+			if(_focus) my.focus();
+
 			// first open to show animation
 			if(!$._bc.vals.darklight.opened) {
 				$("body").append($dark);
@@ -51,7 +64,7 @@ $.fn.extend({
 			// call to check close the darklight
 			my.bind(_event + EVENT_ATTACH, function(){
 				var _ret = _callback.call($(this));
-				if(_ret) {console.log($next);
+				if(_ret) {
 					$(this).unbind(_event + EVENT_ATTACH);
 					my.removeClass("darklight-top");
 
@@ -67,19 +80,8 @@ $.fn.extend({
 			});
 		}
 
-		my.nextDarklight = function(obj, options, callback){
-			var $_next = $(obj);
-			if(options == null) options = new Object();
-			options.start = false;
-			$next = $_next.darklight(options, callback);
-
-			return $next;
-		}
-
-		my.showDarklight = function() {
-			if(options == null) options = new Object();
-			options.start = null;
-			my.darklight(options, callback);
+		if(_start == null) {
+			my.showDarklight();
 		}
 
 		return my;
