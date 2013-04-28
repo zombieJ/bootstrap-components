@@ -15,11 +15,22 @@
 
 		<script>
 			$(document).ready(function(){
-				$("#inputEmail").darklight({event: "keyup"}, function(){
+				$("#inputEmail").darklight({event: "keyup", init: function(){
+					$(this).popover({trigger: "manual"});
+					$(this).popover('show');
+					$(".popover").css("z-index", "99999");
+				}}, function(){
 					if($(this).val() == "email") return true;
 					return false;
 				})
-				.nextDarklight("#inputPassword", {event: "keyup"}, function(){
+				.nextDarklight("#inputPassword", {event: "keyup", init: function(){
+					$("#inputEmail").popover('destroy');
+					$(this).popover({trigger: "manual"});
+					$(this).popover('show');
+					$(".popover").css("z-index", "99999");
+				}, finish: function(){
+					$(this).popover('destroy');
+				}}, function(){
 					if($(this).val() == "pass") return true;
 					return false;
 				})
@@ -44,17 +55,23 @@
 						<h3>This is a demo for darklight</h3>
 					</div>
 					<div class="form-horizontal">
-						<div class="modal-body">
+						<div class="modal-body" style="padding: 40px;">
 							<div class="control-group">
 								<label class="control-label" for="inputEmail">Email</label>
 								<div class="controls">
-									<input type="text" id="inputEmail" placeholder="Please Type 'email'">
+									<input type="text" id="inputEmail" placeholder="Please Type 'email'"
+									data-toggle="popover"
+									title data-original-title="Tips"
+									data-content="Please Type 'email'">
 								</div>
 							</div>
 							<div class="control-group">
 								<label class="control-label" for="inputPassword">Password</label>
 								<div class="controls">
-									<input type="password" id="inputPassword" placeholder="Please Type 'pass'">
+									<input type="password" id="inputPassword" placeholder="Please Type 'pass'"
+									data-toggle="popover"
+									title data-original-title="Tips"
+									data-content="Please Type 'pass'">
 								</div>
 							</div>
 						</div>

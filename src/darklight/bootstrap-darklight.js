@@ -6,6 +6,8 @@ options:
 	focus:			boolean				default is true. When show the target element as darklight, target element will focus
 	event:			[event]				String: when element call the target function, dark background will hide.
 										default is "click" event, it will auto close.
+	init:			[function]			first to call function when trigger the darklight
+	finish:			[function]			call function when the darklight is finished
 	start:			boolean				default is null, false to prevent show right now.
 										to show it call $(tgt).showDarklight();
 callback:			[function]			it will trigger event your set in option-event, return true to trigger close.
@@ -28,8 +30,10 @@ $.fn.extend({
 
 		var _backdrop = $._bc.get(_options, "backdrop", "static");
 		var _event = $._bc.get(_options, "event", "click");
-		var _start = _options.start;
+		var _start = $._bc.get(_options, "start", null);
 		var _focus = $._bc.get(_options, "focus", true);
+		var _init = $._bc.get(_options, "init", null);
+		var _finish = $._bc.get(_options, "finish", null);
 
 		if(_callback == null) _callback = function() {return true;}
 
@@ -49,6 +53,8 @@ $.fn.extend({
 		my.showDarklight = function() {
 			if(_focus) my.focus();
 
+			if(typeof(_init) == 'function') _init.call(my);
+
 			// first open to show animation
 			if(!$._bc.vals.darklight.opened) {
 				$("body").append($dark);
@@ -67,6 +73,8 @@ $.fn.extend({
 				if(_ret) {
 					$(this).unbind(_event + EVENT_ATTACH);
 					my.removeClass("darklight-top");
+
+					if(typeof(_finish) == 'function') _finish.call(my);
 
 					if($next == null) {
 						$dark.removeClass("in");
