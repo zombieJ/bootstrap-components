@@ -1,0 +1,7 @@
+.dropdown-menu li a {
+	cursor: default;
+}
+
+.dropdown-toggle .dropdown-value {
+	margin-right: 5px;
+}

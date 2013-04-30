@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Bootstrap Component Sample</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!-- jQuery -->
+		<script src="assets/jquery.js"></script>
+		<!-- Bootstrap -->
+		<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+		<link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+		<!-- src -->
+		<script src="../src/common/bootstrap-common.js"></script>
+		<script src="../src/dropdown/bootstrap-dropdown.js"></script>
+		<link href="../src/dropdown/bootstrap-dropdown.css" rel="stylesheet" media="screen">
+
+		<script>
+			$(document).ready(function(){
+				
+			});
+		</script>
+		<style>
+		</style>
+	</head>
+	<body>
+	<div class="btn-group">
+		<button class="btn dropdown-toggle" data-toggle="dropdown" data-type="selector">
+			<span class="dropdown-value">Please Select</span>
+			<span class="caret"></span>
+		</button>
+		<ul class="dropdown-menu">
+			<li><a value="hahaha">option with value</a></li>
+			<li><a>option without value</a></li>
+			<li class="divider"></li>
+			<li><a>another option</a></li>
+		</ul>
+	</div>
+	</body>
+</html>
