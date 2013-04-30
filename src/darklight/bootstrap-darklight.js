@@ -66,6 +66,8 @@ $.fn.extend({
 			}
 
 			my.addClass("darklight-top");
+			if(my.css("position") == "static") 
+				my.addClass("darklight-fix-top");
 
 			// call to check close the darklight
 			my.bind(_event + EVENT_ATTACH, function(){
@@ -73,6 +75,7 @@ $.fn.extend({
 				if(_ret) {
 					$(this).unbind(_event + EVENT_ATTACH);
 					my.removeClass("darklight-top");
+					my.removeClass("darklight-fix-top");
 
 					if(typeof(_finish) == 'function') _finish.call(my);
 

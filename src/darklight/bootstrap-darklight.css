@@ -4,5 +4,8 @@
 
 .darklight-top {
 	z-index: 5001;
+}
+
+.darklight-fix-top {
 	position: relative;
 }
