@@ -9,16 +9,19 @@
 		<script src="../assets/bootstrap/js/bootstrap.min.js"></script>
 		<link href="../assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
 		<!-- src -->
-		<script src="../assets/bootstrap-component.min.js"></script>
-		<link href="../assets/bootstrap-component.min.css" rel="stylesheet" media="screen">
+		<script src="../../bootstrap-component.min.js"></script>
+		<link href="../../bootstrap-component.min.css" rel="stylesheet" media="screen">
+		<!-- my -->
+		<link href="assets/main.css" rel="stylesheet" media="screen">
 
 		<script>
 			$(document).ready(function(){
+				$("#sidebar").floater({after: "#navbar"});
 			});
 		</script>
 	</head>
 	<body>
-		<div class="navbar navbar-inverse">
+		<div id="navbar" class="navbar navbar-fixed-top navbar-inverse">
 			<div class="navbar-inner">
 				<a class="brand" href="#">Bootstrap Component</a>
 				<ul class="nav">
@@ -27,6 +30,60 @@
 					<li><a href="#">Link</a></li>
 				</ul>
 			</div>
+		</div>
+
+		<div id="header">
+			<h1>Bootstrap Component</h1>
+			<p>Useful Components Designed For Bootstrap Style</p>
+		</div>
+
+		<div class="container-fluid">
+			<div class="row-fluid">
+				<div class="span3">
+					<ul id="sidebar" class="nav nav-tabs nav-stacked">
+						<li><a href="#h_download">Download</a></li>
+						<li><a href="#h_use">How to use</a></li>
+					</ul>
+				</div>
+				<div class="span9">
+					<div id="h_download" class="page-header">
+						<h1>Download</h1>
+						<p class="lead">You have two type of bootstrap-compoents file for downloading.</p>
+						<div class="row-fluid">
+							<div class="span6">
+								<h2>Download compiled</h2>
+								<p>get the compiled versions of CSS and JS. No docs or original source files.</p>
+								<a class="btn btn-primary btn-large">Download</a>
+							</div>
+							<div class="span6">
+								<h2>Download source</h2>
+								<p>This plugin has already pushed on Github. You can fork the original source files.</p>
+								<a class="btn btn-large">Go to Github</a>
+							</div>
+						</div>
+					</div>
+
+					<div id="h_use" class="page-header">
+						<h1>How to use it</h1>
+						<p class="lead">You need import the css and js file after original Bootstrap files.</p>
+						<pre class="">
+...
+&lt;script src="http://code.jquery.com/jquery.js"&gt;&lt;/script&gt;
+&lt;script src="js/bootstrap.min.js"&gt;&lt;/script&gt;
+&lt;link href="css/bootstrap.min.css" rel="stylesheet" media="screen"&gt;
+
+&lt;-- Bootstrap Components Plugin --&gt;
+<strong class="highlight">&lt;script src="js/bootstrap-component.min.js"&gt;&lt;/script&gt;</strong>
+<strong class="highlight">&lt;link href="css/bootstrap-component.min.css" rel="stylesheet" media="screen"&gt;</strong>
+...
+</pre>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="footer">
+			<p>Build By <a href="https://github.com/DeadPeople">Dead People.</a></p>
 		</div>
 	</body>
 </html>

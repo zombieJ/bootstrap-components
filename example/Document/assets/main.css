@@ -1,0 +1,53 @@
+.navbar {
+	margin-bottom: 0;
+}
+
+#header {
+	padding: 80px 0 40px 0;
+	margin-bottom: 20px;
+	text-align: center;
+	background: #020031;
+	background: -moz-linear-gradient(45deg, #020031 0%, #6d3353 100%);
+	background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#020031), color-stop(100%,#6d3353));
+	background: -webkit-linear-gradient(45deg, #020031 0%,#6d3353 100%);
+	background: -o-linear-gradient(45deg, #020031 0%,#6d3353 100%);
+	background: -ms-linear-gradient(45deg, #020031 0%,#6d3353 100%);
+	background: linear-gradient(45deg, #020031 0%,#6d3353 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#020031', endColorstr='#6d3353',GradientType=1 );
+}
+
+#header h1 {
+	font-size: 60px;
+	color: white;
+}
+
+#header p {
+	font-size: 30px;
+	margin-top: 30px;
+	color: white;
+}
+
+#sidebar {
+	width: 200px;
+}
+
+@media (min-width: 1200px) {
+	#sidebar {
+		width: 258px;
+	}
+}
+
+.footer {
+	border-top: 1px solid #ccc;
+	background: #F4F4F4;
+	padding: 10px;
+	text-align: center;
+}
+
+.footer p {
+	color: #aaa;
+}
+
+pre .highlight {
+	color: #aa0000;
+}
