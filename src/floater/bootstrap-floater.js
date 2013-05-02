@@ -1,5 +1,6 @@
 /* options:
 	after:		[element]			float after target element, default null
+	margin:		[number]			margin of target elment, default is 0
 */
 
 // init function
@@ -12,6 +13,7 @@ $.fn.extend({
 
 		var my = $(this);
 		var $after = $._bc.get(_options, "after", null);
+		var _margin = $._bc.get(_options, "margin", 0);
 		var $tgt = $(document);
 
 		if(my.length == 0) return;
@@ -36,20 +38,20 @@ $.fn.extend({
 			}
 
 			if($after == null) {
-				if($(this).scrollTop() > pos.top) {
+				if($(this).scrollTop() + _margin > pos.top) {
 					my_fake.show();
 					my.addClass("floater");
-					my.css("top", "0");
+					my.css("top", _margin);
 				} else {
 					my_fake.hide();
 					my.removeClass("floater");
 				}
 			} else {
 				var _top = $after.offset().top + $after.outerHeight();
-				if(_top > pos.top) {
+				if(_top + _margin > pos.top) {
 					my_fake.show();
 					my.addClass("floater");
-					my.css("top", (_top - $(this).scrollTop()) + "px");
+					my.css("top", (_top - $(this).scrollTop() + _margin) + "px");
 				} else {
 					my_fake.hide();
 					my.removeClass("floater");

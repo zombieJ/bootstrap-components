@@ -16,27 +16,27 @@
 		<script>
 			$(document).ready(function(){
 				$("#floater1").floater();
-				$("#floater2").floater();
+				$("#floater2").floater({margin: 10});
 				$("#floater3").floater();
 
 				$("#floater_1").floater();
 				$("#floater_2").floater({after: "#floater_1"});
-				$("#floater_3").floater({after: "#floater_2"});
+				$("#floater_3").floater({after: "#floater_2", margin: 10});
 			});
 		</script>
 	</head>
 	<body>
 		<button id="floater1" class="btn btn-primary">Floater</button>
 		<div style="height: 100px; background: #F4F4F4"></div>
-		<button id="floater2" class="btn btn-warning" style="margin-left: 100px;">Floater</button>
+		<button id="floater2" class="btn btn-warning" style="z-index: 100; margin-left: 80px;">Floater With Margin</button>
 		<div style="background: #A4A4F4; padding: 50px 50px 50px 200px;">
-			<button id="floater3" class="btn btn-info" style="z-index: 100; margin-left:20px;">Floater</button>
+			<button id="floater3" class="btn btn-info" style="z-index: 100; margin-left:40px;">Floater</button>
 			<div id="tgt3" style="height: 1200px; background: white; position:relative;">
-				<button id="floater_1" class="btn btn-success" style="margin-left: 100px;">Floater</button>
+				<button id="floater_1" class="btn btn-success" style="margin-left: 120px;">Floater</button>
 				<div style="height: 100px; background: #FFA4FF;"></div>
-				<button id="floater_2" class="btn btn-danger" style="margin-left: 100px;">Floater</button>
+				<button id="floater_2" class="btn btn-danger" style="margin-left: 120px;">Floater</button>
 				<div style="height: 100px; background: #FFFFA4;"></div>
-				<button id="floater_3" class="btn btn-inverse" style="margin-left: 100px;">Floater</button>
+				<button id="floater_3" class="btn btn-inverse" style="margin-left: 100px;">Floater With Margin</button>
 				<div  style="height: 100px; background: #A4FFA4;"></div>
 			</div>
 		</div>
