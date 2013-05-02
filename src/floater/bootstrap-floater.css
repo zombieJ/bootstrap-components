@@ -1,3 +1,8 @@
 .floater {
 	position: fixed;
 }
+
+.floater-collapse {
+	zoom: 1;
+	padding: 0;
+}
