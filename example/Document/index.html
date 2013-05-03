@@ -16,7 +16,7 @@
 
 		<script>
 			$(document).ready(function(){
-				$("#sidebar").floater({after: "#navbar"});
+				$("#sidebar").floater({after: "#navbar", margin: 20, collapse: true});
 			});
 		</script>
 	</head>
@@ -26,8 +26,14 @@
 				<a class="brand" href="#">Bootstrap Component</a>
 				<ul class="nav">
 					<li class="active"><a href="#">Home</a></li>
-					<li><a href="#">Link</a></li>
-					<li><a href="#">Link</a></li>
+					<li><a href="darklight.html">Darklight</a></li>
+					<li><a href="datapicker.html">Datapicker</a></li>
+					<li><a href="dialog.html">Dialog</a></li>
+					<li><a href="dropdown.html">Dropdown</a></li>
+					<li><a href="fileuploader.html">Fileuploader</a></li>
+					<li><a href="floater.html">Floater</a></li>
+					<li><a href="slider.html">Slider</a></li>
+					<li><a href="switch.html">Switch</a></li>
 				</ul>
 			</div>
 		</div>
@@ -39,13 +45,14 @@
 
 		<div class="container-fluid">
 			<div class="row-fluid">
-				<div class="span3">
+				<div class="span3 bs-docs-sidebar">
 					<ul id="sidebar" class="nav nav-tabs nav-stacked">
 						<li><a href="#h_download">Download</a></li>
 						<li><a href="#h_use">How to use</a></li>
+						<li><a href="#h_about">About</a></li>
 					</ul>
 				</div>
-				<div class="span9">
+				<div class="span9 bs-docs-content">
 					<div id="h_download" class="page-header">
 						<h1>Download</h1>
 						<p class="lead">You have two type of bootstrap-compoents file for downloading.</p>
@@ -77,6 +84,11 @@
 <strong class="highlight">&lt;link href="css/bootstrap-component.min.css" rel="stylesheet" media="screen"&gt;</strong>
 ...
 </pre>
+					</div>
+
+					<div id="h_about" class="page-header">
+						<h1>About</h1>
+						<p class="lead">Bootstrap components plugin is not offical plugin. It comes from Bootstrap user who want to use the components in Bootstrap style. If you want to help bootstrap more components, please join me.</p>
 					</div>
 				</div>
 			</div>

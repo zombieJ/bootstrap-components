@@ -31,6 +31,35 @@
 	width: 200px;
 }
 
+.page-header {
+	padding-top: 40px;
+}
+.page-header:first-child {
+	margin-top: -50px;
+}
+
+@media (max-width: 800px) {
+	#sidebar,
+	#sidebar.floater {
+		position: static;
+		width: 100%;
+	}
+
+	.span3.bs-docs-sidebar {
+		width: 100%;
+	}
+
+	.span3.bs-docs-sidebar span {
+		display: none;
+		margin: 0;
+		padding:0;
+	}
+
+	.span9.bs-docs-content {
+		width: 97%;
+	}
+}
+
 @media (min-width: 1200px) {
 	#sidebar {
 		width: 258px;
