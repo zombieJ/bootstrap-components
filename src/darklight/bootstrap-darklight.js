@@ -41,6 +41,13 @@ $.fn.extend({
 		var $next = null;
 		var $dark = $._bc.vals.darklight.darkdrop;
 
+		function closeDarklight() {
+			$dark.removeClass("in");
+			setTimeout(function(){
+				$dark.hide();
+			},300);
+		}
+
 		my.nextDarklight = function(obj, options, callback){
 			var $_next = $(obj);
 			if(options == null) options = new Object();
@@ -65,6 +72,14 @@ $.fn.extend({
 				$._bc.vals.darklight.opened = true;
 			}
 
+			// set backdrop by _backdrop
+			$dark.unbind('click.darklight.backdrop');
+			if(_backdrop == true) {
+				$dark.bind('click.darklight.backdrop', function(event){
+					closeDarklight();
+				});
+			}
+
 			my.addClass("darklight-top");
 			if(my.css("position") == "static") 
 				my.addClass("darklight-fix-top");
@@ -80,10 +95,7 @@ $.fn.extend({
 					if(typeof(_finish) == 'function') _finish.call(my);
 
 					if($next == null) {
-						$dark.removeClass("in");
-						setTimeout(function(){
-							$dark.hide();
-						},300);
+						closeDarklight();
 					} else {
 						$next.showDarklight();
 					}
