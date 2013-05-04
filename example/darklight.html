@@ -19,7 +19,7 @@
 					$(this).popover({trigger: "manual"});
 					$(this).popover('show');
 					$(".popover").css("z-index", "99999");
-				}}, function(){console.log("123");
+				}}, function(e){
 					if($(this).val() == "email") return true;
 					return false;
 				})

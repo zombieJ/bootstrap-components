@@ -4,7 +4,7 @@ options:
 	backdrop:		static(default)		specify static for a backdrop which doesn't close the modal on click.
 					true				enable close the modal on click backdrop.
 	focus:			boolean				default is true. When show the target element as darklight, target element will focus
-	event:			[event]				String: when element call the target function, dark background will hide.
+	event:			string				String: when element call the target function, dark background will hide.
 										default is "click" event, it will auto close.
 	init:			[function]			first to call function when trigger the darklight
 	finish:			[function]			call function when the darklight is finished
@@ -93,8 +93,8 @@ $.fn.extend({
 				my.addClass("darklight-fix-top");
 
 			// call to check close the darklight
-			my.bind(_event + EVENT_ATTACH, function(){
-				var _ret = _callback.call($(this));
+			my.bind(_event + EVENT_ATTACH, function(event){
+				var _ret = _callback.call($(this), event);
 				if(_ret) {
 					removeBind();
 
