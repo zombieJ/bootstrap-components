@@ -175,8 +175,10 @@ $("#element1").darklight(options, checkFunction).nextDarklight("#element2", opti
 							</tbody>
 						</table>
 						<pre>
-$("#element").darklight({event: "keyup"}, function(){
-	
+$("#element").darklight({event: "keyup"}, function(event){
+	if(event.keyCode == 13)
+		return true;
+	return false;
 });
 </pre>
 					</div>
