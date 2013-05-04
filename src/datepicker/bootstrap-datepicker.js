@@ -81,8 +81,6 @@ $.fn.extend({
 				var pos = $(this).position();
 				$datepicker.css("left", pos.left + "px");
 				$datepicker.css("top", (pos.top + $(this).outerHeight()) + "px");
-				console.log(pos);
-				console.log($datepicker.position());
 
 				my.data("datepicker", true);
 				// date model
