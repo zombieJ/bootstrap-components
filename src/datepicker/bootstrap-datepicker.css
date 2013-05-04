@@ -1,6 +1,7 @@
 .datepicker {
 	width: 242px;
 	margin: 0;
+	position: absolute;
 }
 
 /* ----- Date Picker ----- */
