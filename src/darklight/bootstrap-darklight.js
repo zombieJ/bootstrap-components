@@ -48,6 +48,13 @@ $.fn.extend({
 			},300);
 		}
 
+		function removeBind() {
+			my.unbind(_event + EVENT_ATTACH);
+			my.removeClass("darklight-top");
+			my.removeClass("darklight-fix-top");
+			if(typeof(_finish) == 'function') _finish.call(my);
+		}
+
 		my.nextDarklight = function(obj, options, callback){
 			var $_next = $(obj);
 			if(options == null) options = new Object();
@@ -77,6 +84,7 @@ $.fn.extend({
 			if(_backdrop == true) {
 				$dark.bind('click.darklight.backdrop', function(event){
 					closeDarklight();
+					removeBind();
 				});
 			}
 
@@ -88,11 +96,7 @@ $.fn.extend({
 			my.bind(_event + EVENT_ATTACH, function(){
 				var _ret = _callback.call($(this));
 				if(_ret) {
-					$(this).unbind(_event + EVENT_ATTACH);
-					my.removeClass("darklight-top");
-					my.removeClass("darklight-fix-top");
-
-					if(typeof(_finish) == 'function') _finish.call(my);
+					removeBind();
 
 					if($next == null) {
 						closeDarklight();
