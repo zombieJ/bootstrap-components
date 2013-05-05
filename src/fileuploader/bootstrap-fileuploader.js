@@ -1,5 +1,5 @@
 /* options:
-	type:		one				enable only one file to upload[default]
+	type:		single			enable only one file to upload[default]
 				muti			enable muti files to upload
 
 	max:		<number>		Set maximun number of files
@@ -15,7 +15,7 @@ $.fn.extend({
 		var _muti_upload = false;
 		var _max = $._bc.get(_options, "max", -1);
 
-		if($._bc.get(_options, "type", "one") == "muti") {
+		if($._bc.get(_options, "type", "single") == "muti") {
 			_muti_upload = true;
 		}
 
