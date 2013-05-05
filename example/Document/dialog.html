@@ -13,12 +13,20 @@
 		<link href="../../bootstrap-component.min.css" rel="stylesheet" media="screen">
 		<!-- my -->
 		<link href="assets/main.css" rel="stylesheet" media="screen">
+		<script src="../../src/dialog/bootstrap-dialog.js"></script>
 
 		<script>
 			$(document).ready(function(){
 				$("#sidebar").floater({after: "#navbar", margin: 20, collapse: true});
 
-				$("#datepicker").datepicker();
+				$("#btn_dialog").click(function(){
+					$.dialog({
+						title: "Hello",
+						content: "This is an dialog.",
+						backdrop: "static",
+						confirm: true,
+					});
+				});
 			});
 		</script>
 	</head>
@@ -29,8 +37,8 @@
 				<ul class="nav">
 					<li><a href="index.html">Home</a></li>
 					<li><a href="darklight.html">Darklight</a></li>
-					<li class="active"><a href="datepicker.html">Datepicker</a></li>
-					<li><a href="dialog.html">Dialog</a></li>
+					<li><a href="datepicker.html">Datepicker</a></li>
+					<li class="active"><a href="dialog.html">Dialog</a></li>
 					<li><a href="dropdown.html">Dropdown</a></li>
 					<li><a href="fileuploader.html">Fileuploader</a></li>
 					<li><a href="floater.html">Floater</a></li>
@@ -41,8 +49,8 @@
 		</div>
 
 		<div id="header">
-			<h1>Datapicker</h1>
-			<p>An component for datapicker.</p>
+			<h1>Dialog</h1>
+			<p>An simple dialog which is made by Modal, working as js Alert.</p>
 		</div>
 
 		<div class="container-fluid">
@@ -58,17 +66,14 @@
 				<div class="span9 bs-docs-content">
 					<div class="page-header subcontent">
 						<div class="page-header">
-							<h1>Datepciker
-								<small>bootstrap-datepicker.js</small>
+							<h1>Dialog
+								<small>bootstrap-dialog.js</small>
 							</h1>
 						</div>
 						<h2 id="h_example">Examples</h2>
 						<p>Datepicker is used for input element which need date type input. When user focus on the element, a datepicker component will popup for user use.</p>
 						<div class="bs-docs-example" style="background-color: #f5f5f5;">
-							<div id="datepicker" class="input-append">
-								<input class="datepicker" id="appendedInput" type="text" style="width: 140px;">
-								<button class="btn" data-toggle="datepicker" href="#"><i class="icon-calendar"></i></button>
-							</div>
+							<button id="btn_dialog" class="btn btn-primary" href="#">Show Dialog</button>
 						</div>
 
 						<h2 id="h_usage">Usage</h2>

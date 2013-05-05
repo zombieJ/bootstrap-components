@@ -16,33 +16,51 @@
 		<script>
 			$(document).ready(function(){
 				$("#dlg").click(function(){
-					var $content = $('#sample').html();
-					var modal = $.dialog({
+					// dialog - alert
+					var $content = $('#sample > div').clone();
+
+					$.dialog({
 						title: "Sample Title",
 						content: $content,
-					},
-					function(){		// when create modal, it can call $(this) get the modal.
-						$btn = $(this).find('#dlg2');
-						$btn.click(function(){
-							$.dialog({
-								title: "Sub Dialog",
-								content: "This is sub dialog",
-							});
+					});
+
+					$btn = $content.find('a.btn');
+					$btn.click(function(){
+						$.dialog({
+							title: "Sub Dialog",
+							content: "This is sub dialog",
 						});
+					});
+				});
+
+
+
+				// dialog - confirm
+				$("#dlg_confirm").click(function(){
+					$.dialog({
+						title: "Comfirm",
+						content: "Do You want to confirm?",
+						confirm: true,
+					}, function(ret){
+						$("#dlg_confirm_tips").html("You select: "+ret);
 					});
 				});
 			});
 		</script>
 		<!-- Button to trigger modal -->
-		<a id="dlg" class="btn">show</a>
-		
+		<a id="dlg" class="btn">alert</a>
+		<a id="dlg_confirm" class="btn">confirm</a>
+		<span id="dlg_confirm_tips"></span>
+
 		<div id="sample" class="hide">
-			<p>This is a sample!</p>
-			<br/>
-			<br/>
-			<br/>
-			<br/>
-			<a id="dlg2" class="btn">show2</a>
+			<div>
+				<p>This is a sample!</p>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				<a class="btn">show2</a>
+			</div>
 		</div>
 	</body>
 </html>
