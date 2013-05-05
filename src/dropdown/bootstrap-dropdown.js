@@ -11,7 +11,7 @@
 		}
 
 		var $tgt = $parent.find("[data-type='selector']");
-		var $tgt_input = $($tgt.attr("data-href"));
+		var $tgt_input = $($tgt.attr("data-to"));
 
 		var value_pre = $tgt.val();
 		var value = $(this).attr("value");

@@ -77,14 +77,19 @@
 
 						<h2 id="h_usage">Usage</h2>
 						<p>As use of Dropdown. To realize selector, you should add attribute <code>data-type="selector"</code> on the dropdown-toggle and add an <code>span</code> class of <code>dropdown-value</code> inside it.</p>
+						<p>For options list, ul should add class <code>dropdown-options</code>. And for option item, you can set value in <code>li > a</code> attribute <code>value</code>. If not set value, its value will be same as its html content.</p>
 						<pre>
 &lt;button class="btn dropdown-toggle" data-toggle="dropdown" <strong class="highlight">data-type="selector"</strong>&gt;
 	<strong class="highlight">&lt;span class="dropdown-value"&gt;&lt;/span&gt;</strong>
 &lt;/button&gt;
+&lt;ul class="dropdown-menu <strong class="highlight">dropdown-options</strong>"&gt;
+	&lt;li&gt;&lt;a <strong class="highlight">value="yourValue"</strong>&gt;option&lt;/a&gt;&lt;/li&gt;
+	...
+&lt;/ul&gt;
 </pre>
 
 						<h3 id="h_options">Options</h3>
-						<p>Options should be passed via JavaScript.</p>
+						<p>Append the option name to <code>data-</code>, as in <code>data-to</code>.</p>
 						<table class="table table-bordered table-striped">
 							<thead>
 								<tr>
@@ -96,34 +101,25 @@
 							</thead>
 							<tbody>
 								<tr>
-									<td>title</td>
+									<td>to</td>
 									<td>string</td>
 									<td></td>
-									<td>Set the title of dialog window.</td>
+									<td>Set the target input element. When user change the select option, the value of target input element will also be changed.</td>
 								</tr>
 								<tr>
-									<td>content</td>
-									<td>string</td>
-									<td></td>
-									<td>Set the content of dialog window. You can also set content as dom element.</td>
-								</tr>
-								<tr>
-									<td>close</td>
-									<td>boolean</td>
-									<td>true</td>
-									<td>Display the close button.</td>
-								</tr>
-								<tr>
-									<td>confirm</td>
-									<td>boolean</td>
-									<td>false</td>
-									<td>Set dialog mode as confirm. You can get the resault by callback function.</td>
-								</tr>
-								<tr>
-									<td colspan="4">And other options is same in Modal Component.</td>
+									<td colspan="4">And other options is same to original Dropdown Component.</td>
 								</tr>
 							</tbody>
 						</table>
+						<pre>
+&lt;input <strong class="highlight">id="sel_tgt"</strong> type="hidden" /&gt;
+&lt;button class="btn dropdown-toggle" data-toggle="dropdown" data-type="selector" <strong class="highlight">data-to="#sel_tgt"</strong>&gt;
+	&lt;span class="dropdown-value"&gt;&lt;/span&gt;
+&lt;/button&gt;
+&lt;ul class="dropdown-menu dropdown-options"&gt;
+	...
+&lt;/ul&gt;
+</pre>
 
 						<h3 id="h_events">Events</h3>
 						<table class="table table-bordered table-striped">
@@ -135,23 +131,13 @@
 							</thead>
 							<tbody>
 								<tr>
-									<td>callback</td>
+									<td>change</td>
 									<td>
-										It will trigger event when user close this dialog by click the return button.
-										return boolean of confirm, and <code>false</code> of alert and close button.
+										It will trigger when change its value. It'll also trigger change event for <code>data-to</code> element.
 									</td>
 								</tr>
 							</tbody>
 						</table>
-						<pre>
-$.dialog({
-	title: "Comfirm",
-	content: "Do You want to confirm?",
-	confirm: true,
-}, function(ret){
-	// ret is true if user click 'confirm' button.
-});
-</pre>
 					</div>
 				</div>
 			</div>
