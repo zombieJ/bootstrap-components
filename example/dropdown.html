@@ -15,15 +15,22 @@
 
 		<script>
 			$(document).ready(function(){
-				
+				$("#sel_tgt").change(function(){
+					$("#lb_tips").html($(this).val());
+				});
 			});
 		</script>
+
 		<style>
 		</style>
 	</head>
 	<body>
 	<div class="btn-group">
-		<button class="btn dropdown-toggle" data-toggle="dropdown" data-type="selector">
+		<input id="sel_tgt" type="hidden" />
+		<button class="btn dropdown-toggle" 
+			data-toggle="dropdown" data-type="selector"
+			data-href="#sel_tgt"
+			>
 			<span class="dropdown-value">Please Select</span>
 			<span class="caret"></span>
 		</button>
@@ -33,6 +40,7 @@
 			<li class="divider"></li>
 			<li><a>another option</a></li>
 		</ul>
+		<label id="lb_tips"></label>
 	</div>
 	</body>
 </html>

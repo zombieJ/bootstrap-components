@@ -11,9 +11,18 @@
 		}
 
 		var $tgt = $parent.find("[data-type='selector']");
+		var $tgt_input = $($tgt.attr("data-href"));
+
+		var value_pre = $tgt.val();
 		var value = $(this).attr("value");
 		if(value == undefined) value = $(this).html();
+
 		$tgt.val(value);
 		$tgt.find(".dropdown-value").html($(this).html());
+		$tgt_input.val(value);
+
+		if(value != value_pre) {
+			$tgt.add($tgt_input).change();
+		}
 	});
 }(window.jQuery);
