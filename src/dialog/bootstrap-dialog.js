@@ -7,7 +7,7 @@ options:
 	!other options which contains in modal
 
 callback:			[function]			it will trigger event when user close this dialog by click the return button.
-										return boolean of confirm, and true of alert.
+										return boolean of confirm, and false of alert and close button.
 */
 
 // init env
@@ -22,7 +22,7 @@ $.extend({
 		var _options = vars.options;
 		var _callback = vars.callback;
 
-		var _title = $._bc.get(_options, "title", "Alert");
+		var _title = $._bc.get(_options, "title", "");
 		var _content = $._bc.get(_options, "content", "");
 		var _close = $._bc.get(_options, "close", true);
 		var _confirm = $._bc.get(_options, "confirm", false);
@@ -82,7 +82,7 @@ $.extend({
 				if(_ret != null) {
 					_callback.call($modal, _ret);
 				} else {
-					_callback.call($modal, true);
+					_callback.call($modal, false);
 				}
 			}
 		});

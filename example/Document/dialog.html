@@ -13,7 +13,6 @@
 		<link href="../../bootstrap-component.min.css" rel="stylesheet" media="screen">
 		<!-- my -->
 		<link href="assets/main.css" rel="stylesheet" media="screen">
-		<script src="../../src/dialog/bootstrap-dialog.js"></script>
 
 		<script>
 			$(document).ready(function(){
@@ -23,8 +22,6 @@
 					$.dialog({
 						title: "Hello",
 						content: "This is an dialog.",
-						backdrop: "static",
-						confirm: true,
 					});
 				});
 			});
@@ -77,16 +74,9 @@
 						</div>
 
 						<h2 id="h_usage">Usage</h2>
-						<p>Enable darklight via JavaScript:</p>
+						<p>Enable dialog via JavaScript:</p>
 						<pre>
-$("#element").datepicker();
-</pre>
-						<p>When it's called datepicker, it will find the sub elment which contains class 'datapicker' as input/output element and find sub element which contains attribute [data-toggle='datepicker'] as trigger:</p>
-<pre>
-&lt;div id="datepicker" class="input-append"&gt;
-	&lt;input <strong class='highlight'>class="datepicker"</strong> id="appendedInput" type="text" style="width: 140px;"&gt;
-	&lt;button class="btn" <strong class='highlight'>data-toggle="datepicker"</strong> href="#"&gt;&lt;i class="icon-calendar"&gt;&lt;/i&gt;&lt;/button&gt;
-&lt;/div&gt;
+$.dialog(options, callback);
 </pre>
 
 						<h3 id="h_options">Options</h3>
@@ -102,22 +92,31 @@ $("#element").datepicker();
 							</thead>
 							<tbody>
 								<tr>
-									<td>target</td>
+									<td>title</td>
 									<td>string</td>
-									<td>all</td>
-									<td>
-										<code>all</code> will display date and time selector.
-										<code>timer</code> will display time selector.
-										<code>dater</code> will display date selector.
-									</td>
+									<td></td>
+									<td>Set the title of dialog window.</td>
 								</tr>
 								<tr>
-									<td>date</td>
-									<td>Date</td>
+									<td>content</td>
+									<td>string</td>
 									<td></td>
-									<td>
-										To set date time. Default date time is now.
-									</td>
+									<td>Set the content of dialog window. You can also set content as dom element.</td>
+								</tr>
+								<tr>
+									<td>close</td>
+									<td>boolean</td>
+									<td>true</td>
+									<td>Display the close button.</td>
+								</tr>
+								<tr>
+									<td>confirm</td>
+									<td>boolean</td>
+									<td>false</td>
+									<td>Set dialog mode as confirm. You can get the resault by callback function.</td>
+								</tr>
+								<tr>
+									<td colspan="4">And other options is same in Modal Component.</td>
 								</tr>
 							</tbody>
 						</table>
@@ -132,14 +131,21 @@ $("#element").datepicker();
 							</thead>
 							<tbody>
 								<tr>
-									<td>change</td>
-									<td>It will trigger when datepicker change its value.</td>
+									<td>callback</td>
+									<td>
+										It will trigger event when user close this dialog by click the return button.
+										return boolean of confirm, and <code>false</code> of alert and close button.
+									</td>
 								</tr>
 							</tbody>
 						</table>
 						<pre>
-$("#element").change(function(){
-	alert("Date Change!");
+$.dialog({
+	title: "Comfirm",
+	content: "Do You want to confirm?",
+	confirm: true,
+}, function(ret){
+	// ret is true if user click 'confirm' button.
 });
 </pre>
 					</div>
