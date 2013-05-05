@@ -16,7 +16,7 @@
 		<script>
 			$(document).ready(function(){
 				$("#sel_tgt").change(function(){
-					$("#lb_tips").html($(this).val());
+					$("#lb_tips").html("select value : "+$(this).val());
 				});
 			});
 		</script>
@@ -27,19 +27,19 @@
 	<body>
 	<div class="btn-group">
 		<input id="sel_tgt" type="hidden" />
-		<button class="btn dropdown-toggle" 
-			data-toggle="dropdown" data-type="selector"
-			data-href="#sel_tgt"
-			>
-			<span class="dropdown-value">Please Select</span>
-			<span class="caret"></span>
-		</button>
-		<ul class="dropdown-menu">
-			<li><a value="hahaha">option with value</a></li>
-			<li><a>option without value</a></li>
-			<li class="divider"></li>
-			<li><a>another option</a></li>
-		</ul>
+			<button class="btn dropdown-toggle" 
+				data-toggle="dropdown" data-type="selector"
+				data-href="#sel_tgt"
+				>
+				<span class="dropdown-value">Please Select</span>
+				<span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu dropdown-options">
+				<li><a value="hahaha">option with value</a></li>
+				<li><a>option without value</a></li>
+				<li class="divider"></li>
+				<li><a>another option</a></li>
+			</ul>
 		<label id="lb_tips"></label>
 	</div>
 	</body>

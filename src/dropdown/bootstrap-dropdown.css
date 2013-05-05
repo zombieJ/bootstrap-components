@@ -5,3 +5,7 @@
 .dropdown-toggle .dropdown-value {
 	margin-right: 5px;
 }
+.dropdown-menu.dropdown-options {
+	top: auto;
+	left: auto;
+}
