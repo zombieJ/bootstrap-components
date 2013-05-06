@@ -5,6 +5,7 @@ options:
 	position:		string				"left", "right", "top", "bottom". You can mix then up as "left,top" (it's same as "top,left")
 	type:			string				"normal", "warning", "info", "error", "success"
 	timeout:		number				default: 5000, hiden speed.
+	region:			string				default: "", saming region notification will not keep out other notification in same region.
 
 callback:			[function]			it will trigger event when user close this dialog by click the return button.
 										return boolean of confirm, and false of alert and close button.
@@ -23,9 +24,14 @@ $.extend({
 		var _position = $._bc.get(_options, "position", "right,top");
 		var _type = $._bc.get(_options, "type", "normal");
 		var _timeout = $._bc.get(_options, "timeout", 5000);
+		var _region = $._bc.get(_options, "region", "");
 
-		var $notification = $("<div class='alert notification-body alert-block'>");
+		var $notification = $("<div class='alert notification-body'>");
 		var $btn = $("<button type='button' class='close'>¡Á</button>");
+
+		if(_region != "") {
+			$notification.attr("data-region", _region);
+		}
 
 		// alert position
 		if(_position.indexOf("left") != -1) $notification.addClass("left");
@@ -46,11 +52,25 @@ $.extend({
 		$notification.append(_title);
 		if(_content != "") $notification.append(_content);
 
-		// fade in
+		// get the list of notification who are in the same region.
+		var regions = $("div.notification-body");
+
+		// append notification
 		$("body").append($notification);
+
+		var _myHeight = $notification.outerHeight();
+		regions.each(function(){
+			var _m_top = ($(this).offset().top + _myHeight) + "px";
+			$(this).animate({
+				top: _m_top,
+			});
+		});
+
+		// fade in
 		$notification.hide();
 		$notification.fadeIn();
 
+		// auto fade out
 		if(_timeout > 0) {
 			var _tt;
 			function setAutoFadeOut() {

@@ -37,7 +37,9 @@
 				});
 				$("#btn_error").click(function(){
 					$.notify({
-						content: "Default title is 'Notification'.",
+						title: "Has Region",
+						content: "Notification with region will not keep out other notificaiton in the same region.",
+						region: "helloWorld",
 						type: "error",
 					});
 				});
