@@ -53,18 +53,34 @@ $.extend({
 		if(_content != "") $notification.append(_content);
 
 		// get the list of notification who are in the same region.
-		var regions = $("div.notification-body");
+		var regions = $("div.notification-body[data-region='"+_region+"']");
 
 		// append notification
 		$("body").append($notification);
 
+		// move notifications in same region
 		var _myHeight = $notification.outerHeight();
-		regions.each(function(){
-			var _m_top = ($(this).offset().top + _myHeight) + "px";
-			$(this).animate({
-				top: _m_top,
-			});
-		});
+		if(_position.indexOf("top") != -1) {
+			var _startTop = _myHeight + 10;
+			for(var i = regions.length - 1 ; i >= 0 ; i--) {
+				var $element = $(regions[i]);
+				var _m_top = _startTop + "px";
+				$element.animate({
+					top: _m_top,
+				},{queue: false});
+				_startTop += $element.outerHeight() + 10;
+			}
+		} else if(_position.indexOf("bottom") != -1) {
+			var _startBottom = _myHeight + 10;
+			for(var i = regions.length - 1 ; i >= 0 ; i--) {
+				var $element = $(regions[i]);
+				var _m_bottom = _startBottom + "px";
+				$element.animate({
+					bottom: _m_bottom,
+				},{queue: false});
+				_startBottom += $element.outerHeight() + 10;
+			}
+		}
 
 		// fade in
 		$notification.hide();
