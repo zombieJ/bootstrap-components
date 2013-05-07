@@ -26,6 +26,8 @@ $.extend({
 		var _timeout = $._bc.get(_options, "timeout", 5000);
 		var _region = $._bc.get(_options, "region", "");
 
+		var _tt = null;
+
 		var $notification = $("<div class='alert notification-body'>");
 		var $btn = $("<button type='button' class='close'>¡Á</button>");
 
@@ -68,6 +70,9 @@ $.extend({
 				$element.animate({
 					top: _m_top,
 				},{queue: false});
+				$element.attr("data-region-index", i);
+				$element.mouseenter();
+				$element.mouseleave();
 				_startTop += $element.outerHeight() + 10;
 			}
 		} else if(_position.indexOf("bottom") != -1) {
@@ -78,23 +83,26 @@ $.extend({
 				$element.animate({
 					bottom: _m_bottom,
 				},{queue: false});
+				$element.attr("data-region-index", i);
+				$element.mouseenter();
+				$element.mouseleave();
 				_startBottom += $element.outerHeight() + 10;
 			}
 		}
+		$notification.attr("data-region-index", regions.length);
 
 		// fade in
 		$notification.hide();
 		$notification.fadeIn();
 
 		// auto fade out
+		function setAutoFadeOut() {
+			var _delay = parseInt($notification.attr("data-region-index"), 10) * 1000;
+			_tt = window.setTimeout(function(){
+				$btn.click();
+			}, _timeout + _delay);
+		}
 		if(_timeout > 0) {
-			var _tt;
-			function setAutoFadeOut() {
-				_tt = window.setTimeout(function(){
-					$btn.click();
-				}, _timeout);
-			}
-
 			setAutoFadeOut();
 			$notification.mouseenter(function(){
 				window.clearTimeout(_tt);
