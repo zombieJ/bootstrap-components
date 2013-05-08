@@ -4,7 +4,7 @@ options:
 	content:		element				specify content of dialog.
 	position:		string				"left", "right", "top", "bottom". You can mix then up as "left,top" (it's same as "top,left")
 	type:			string				"normal", "warning", "info", "error", "success"
-	timeout:		number				default: 5000, hiden speed.
+	timeout:		number				default: 4000, hiden speed.
 	region:			string				default: "", saming region notification will not keep out other notification in same region.
 
 callback:			[function]			it will trigger event when user close this dialog by click the return button.
@@ -23,7 +23,7 @@ $.extend({
 		var _content = $._bc.get(_options, "content", "");
 		var _position = $._bc.get(_options, "position", "right,top");
 		var _type = $._bc.get(_options, "type", "normal");
-		var _timeout = $._bc.get(_options, "timeout", 5000);
+		var _timeout = $._bc.get(_options, "timeout", 4000);
 		var _region = $._bc.get(_options, "region", "");
 
 		var _tt = null;
@@ -54,42 +54,8 @@ $.extend({
 		$notification.append(_title);
 		if(_content != "") $notification.append(_content);
 
-		// get the list of notification who are in the same region.
-		var regions = $("div.notification-body[data-region='"+_region+"']");
-
 		// append notification
 		$("body").append($notification);
-
-		// move notifications in same region
-		var _myHeight = $notification.outerHeight();
-		if(_position.indexOf("top") != -1) {
-			var _startTop = _myHeight + 10;
-			for(var i = regions.length - 1 ; i >= 0 ; i--) {
-				var $element = $(regions[i]);
-				var _m_top = _startTop + "px";
-				$element.animate({
-					top: _m_top,
-				},{queue: false});
-				$element.attr("data-region-index", i);
-				$element.mouseenter();
-				$element.mouseleave();
-				_startTop += $element.outerHeight() + 10;
-			}
-		} else if(_position.indexOf("bottom") != -1) {
-			var _startBottom = _myHeight + 10;
-			for(var i = regions.length - 1 ; i >= 0 ; i--) {
-				var $element = $(regions[i]);
-				var _m_bottom = _startBottom + "px";
-				$element.animate({
-					bottom: _m_bottom,
-				},{queue: false});
-				$element.attr("data-region-index", i);
-				$element.mouseenter();
-				$element.mouseleave();
-				_startBottom += $element.outerHeight() + 10;
-			}
-		}
-		$notification.attr("data-region-index", regions.length);
 
 		// fade in
 		$notification.hide();
@@ -97,13 +63,18 @@ $.extend({
 
 		// auto fade out
 		function setAutoFadeOut() {
-			var _delay = parseInt($notification.attr("data-region-index"), 10) * 1000;
+			var _inner_delay = $notification.attr("data-delay");
+			if(_inner_delay == null)
+				_inner_delay = _timeout;
+			else
+				_inner_delay = parseInt(_inner_delay, 10);
+
 			_tt = window.setTimeout(function(){
 				$btn.click();
-			}, _timeout + _delay);
+			}, _inner_delay);
 		}
 		if(_timeout > 0) {
-			setAutoFadeOut();
+			//setAutoFadeOut();
 			$notification.mouseenter(function(){
 				window.clearTimeout(_tt);
 			});
@@ -111,6 +82,38 @@ $.extend({
 				setAutoFadeOut();
 			});
 		}
+
+		// deal with notifications in same region
+		function refreshAllRelated() {
+			var regions = null;
+			if(_region == "") {
+				regions = $notification;
+			} else {
+				regions = $("div.notification-body[data-region='"+_region+"']");
+			}
+			var _istop = _position.indexOf("top") != -1;
+			var _isbottom = _position.indexOf("bottom") != -1;
+
+			var _offset = 0;
+			for(var i = regions.length - 1 ; i >= 0 ; i--) {
+				var $element = $(regions[i]);
+
+				// move element
+				if(_istop) {
+					$element.animate({	top: _offset,},{queue: false});
+				} else if(_isbottom) {
+					$element.animate({	bottom: _offset,},{queue: false});
+				}
+				var _marginTop = parseInt($element.css("margin-top").replace("px",""), 10);
+				_offset += $element.outerHeight() + _marginTop;
+
+				// set timeout
+				$element.attr("data-delay", _timeout + i * 1000);
+				$element.mouseenter();
+				$element.mouseleave();
+			}
+		}
+		refreshAllRelated();
 
 		// fade out
 		$btn.click(function(){
