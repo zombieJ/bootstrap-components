@@ -45,10 +45,12 @@
 				});
 				$("#btn_success").click(function(){
 					$.notify({
-						content: "Set the position.",
+						title: "Has Region",
+						content: "Set the position & not auto-hide.",
 						position: "right, bottom",
 						type: "success",
 						region: "region2",
+						timeout: -1,
 					});
 				});
 			});

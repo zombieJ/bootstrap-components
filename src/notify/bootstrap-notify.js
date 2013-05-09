@@ -5,11 +5,17 @@ options:
 	position:		string				"left", "right", "top", "bottom". You can mix then up as "left,top" (it's same as "top,left")
 	type:			string				"normal", "warning", "info", "error", "success"
 	timeout:		number				default: 4000, hiden speed.
+	overtimeout:	number				default: 1000, hiden speed after mouse move out.
+	queuetimeout:	number				default: 1000, hiden speed interval between 2 notification in same the region.
 	region:			string				default: "", saming region notification will not keep out other notification in same region.
 
 callback:			[function]			it will trigger event when user close this dialog by click the return button.
 										return boolean of confirm, and false of alert and close button.
 */
+
+// init env
+$._bc.vals.notify = new Object();
+$._bc.vals.notify.region = new Object();	// record by region
 
 // init function
 $.extend({
@@ -24,15 +30,25 @@ $.extend({
 		var _position = $._bc.get(_options, "position", "right,top");
 		var _type = $._bc.get(_options, "type", "normal");
 		var _timeout = $._bc.get(_options, "timeout", 4000);
+		var _overtimeout = $._bc.get(_options, "overtimeout", 1000);
+		var _queuetimeout = $._bc.get(_options, "queuetimeout", 1000);
 		var _region = $._bc.get(_options, "region", "");
+		var _list = null;
 
 		var _tt = null;
 
 		var $notification = $("<div class='alert notification-body'>");
 		var $btn = $("<button type='button' class='close'>¡Á</button>");
 
+		// get the notification list for region
 		if(_region != "") {
 			$notification.attr("data-region", _region);
+			_list = $._bc.vals.notify.region[_region];
+			if(_list == null) {
+				_list = $._bc.list();
+				$._bc.vals.notify.region[_region] = _list;
+			}
+			_list.add($notification);
 		}
 
 		// alert position
@@ -62,55 +78,63 @@ $.extend({
 		$notification.fadeIn();
 
 		// auto fade out
-		function setAutoFadeOut() {
-			var _inner_delay = $notification.attr("data-delay");
-			if(_inner_delay == null)
-				_inner_delay = _timeout;
-			else
-				_inner_delay = parseInt(_inner_delay, 10);
-
-			_tt = window.setTimeout(function(){
-				$btn.click();
-			}, _inner_delay);
+		$notification.stopAutoFadeOut = function() {
+			window.clearTimeout(_tt);
 		}
+		$notification.setAutoFadeOut = function(_delay) {
+			if(_timeout > 0) {
+				var _inner_delay = _delay == null ? _timeout : _delay;
+
+				$notification.stopAutoFadeOut();
+				_tt = window.setTimeout(function(){
+					$btn.click();
+				}, _inner_delay);
+			}
+		}
+
+		// refresh timeout if is hover
 		if(_timeout > 0) {
-			//setAutoFadeOut();
 			$notification.mouseenter(function(){
-				window.clearTimeout(_tt);
+				if(_list == null) {
+					$notification.stopAutoFadeOut();
+				} else {
+					for(var i = _list.length - 1 ; i >= 0  ; i--) {
+						var $element = _list[i];
+						$element.stopAutoFadeOut();
+					}
+				}
 			});
 			$notification.mouseleave(function(){
-				setAutoFadeOut();
+				refreshAllRelated(_overtimeout);
 			});
 		}
 
 		// deal with notifications in same region
-		function refreshAllRelated() {
-			var regions = null;
-			if(_region == "") {
-				regions = $notification;
+		function refreshAllRelated(_delay) {
+			var _inner_delay = _delay == null ? _timeout : _delay;
+
+			if(_list == null) {
+				$notification.setAutoFadeOut(_inner_delay);
 			} else {
-				regions = $("div.notification-body[data-region='"+_region+"']");
-			}
-			var _istop = _position.indexOf("top") != -1;
-			var _isbottom = _position.indexOf("bottom") != -1;
+				var _istop = _position.indexOf("top") != -1;
+				var _isbottom = _position.indexOf("bottom") != -1;
 
-			var _offset = 0;
-			for(var i = regions.length - 1 ; i >= 0 ; i--) {
-				var $element = $(regions[i]);
+				var _offset = 0;
+				for(var i = _list.length - 1 ; i >= 0  ; i--) {
+					var $element = _list[i];
 
-				// move element
-				if(_istop) {
-					$element.animate({	top: _offset,},{queue: false});
-				} else if(_isbottom) {
-					$element.animate({	bottom: _offset,},{queue: false});
+					// move element
+					if(_istop) {
+						$element.animate({	top: _offset,},{queue: false});
+					} else if(_isbottom) {
+						$element.animate({	bottom: _offset,},{queue: false});
+					}
+					var _marginTop = parseInt($element.css("margin-top").replace("px",""), 10);
+					_offset += $element.outerHeight() + _marginTop;
+
+					// set timeout
+					$element.setAutoFadeOut(_inner_delay + i * _queuetimeout);
 				}
-				var _marginTop = parseInt($element.css("margin-top").replace("px",""), 10);
-				_offset += $element.outerHeight() + _marginTop;
-
-				// set timeout
-				$element.attr("data-delay", _timeout + i * 1000);
-				$element.mouseenter();
-				$element.mouseleave();
 			}
 		}
 		refreshAllRelated();
@@ -120,6 +144,7 @@ $.extend({
 			$notification.fadeOut();
 			window.setTimeout(function(){
 				$notification.remove();
+				if(_list != null) _list.remove($notification);
 			}, 1000);
 		});
 	}
