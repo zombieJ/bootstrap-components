@@ -11,6 +11,8 @@ options:
 
 callback:			[function]			it will trigger event when user close this dialog by click the return button.
 										return boolean of confirm, and false of alert and close button.
+
+return:				[element]			return notification element
 */
 
 // init env
@@ -147,5 +149,7 @@ $.extend({
 				if(_list != null) _list.remove($notification);
 			}, 1000);
 		});
+
+		return $notification;
 	}
 });
