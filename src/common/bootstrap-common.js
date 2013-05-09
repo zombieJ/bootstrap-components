@@ -29,6 +29,25 @@ $._bc.get = function(options, key, defaultValue) {
 	}
 }
 
+$._bc.list = function() {
+	var list = new Array();
+	list.add = function(obj) {
+		list.push(obj);
+	}
+	list.remove = function(obj) {
+		var loc = null;
+		for (var i = 0; i < list.length; i++) {
+			var _o = list[i];
+			if(obj == _o) {
+				loc = i;
+				break;
+			}
+		}
+		if(loc != null) list.splice(loc, 1);
+	}
+	return list;
+}
+
 // get the broswer version
 var userAgent = navigator.userAgent.toLowerCase();
 $._bc.browser = { 
