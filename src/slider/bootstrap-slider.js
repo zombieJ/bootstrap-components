@@ -6,9 +6,17 @@ $.fn.extend({
 		var _options = vars.options;
 
 		var value = _options.value;
+		var max_value = $._bc.get(_options, "max", null);
+		var min_value = $._bc.get(_options, "min", null);
+
 		var $process = $(this);
 		var $spiner = $process.find(".slider[data-toggle='slider']");
 		var _total_width = $process.outerWidth() - $spiner.outerWidth();
+
+		if(max_value != null && min_value != null) {
+			$spiner.attr("data-min", min_value);
+			$spiner.attr("data-max", max_value);
+		}
 
 		var _min = parseInt($spiner.attr("data-min"), 10);
 		var _max = parseInt($spiner.attr("data-max"), 10);
