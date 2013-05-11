@@ -17,6 +17,15 @@
 		<script>
 			$(document).ready(function(){
 				$("#sidebar").floater({after: "#navbar", margin: 20, collapse: true});
+
+				$("#btn_info").click(function(){
+					$.notify({
+						title: "Hi",
+						content: "This is a notification.",
+						region: "demo",
+						type: "info",
+					});
+				});
 			});
 		</script>
 	</head>
@@ -32,16 +41,16 @@
 					<li><a href="dropdown.html">Dropdown</a></li>
 					<li><a href="fileuploader.html">Fileuploader</a></li>
 					<li><a href="floater.html">Floater</a></li>
-					<li class="active"><a href="slider.html">Slider</a></li>
+					<li><a href="slider.html">Slider</a></li>
 					<li><a href="switch.html">Switch</a></li>
-					<li><a href="notify.html">Notify</a></li>
+					<li class="active"><a href="notify.html">Notify</a></li>
 				</ul>
 			</div>
 		</div>
 
 		<div id="header">
-			<h1>Slider</h1>
-			<p>A simple slider bar.</p>
+			<h1>Notify</h1>
+			<p>Simple component for message notification.</p>
 		</div>
 
 		<div class="container-fluid">
@@ -57,28 +66,31 @@
 				<div class="span9 bs-docs-content">
 					<div class="page-header subcontent">
 						<div class="page-header">
-							<h1>Slider
-								<small>bootstrap-slider.js</small>
+							<h1>Notify
+								<small>bootstrap-notify.js</small>
 							</h1>
 						</div>
 						<h2 id="h_example">Examples</h2>
 						<p>Datepicker is used for input element which need date type input. When user focus on the element, a datepicker component will popup for user use.</p>
 						<div class="bs-docs-example" style="background-color: #f5f5f5;">
-							<div class="progress">
-								<button type="button" class="btn btn-primary slider" data-toggle="slider"></button>
-							</div>
+							<button id="btn_info" type="button" class="btn btn-info">Show Notification</button>
 						</div>
 
 						<h2 id="h_usage">Usage</h2>
-						<p>Silder use <code>process</code> stylesheet. You need add <code>slider</code> class and <code>data-toggle="slider"</code> to the <code>button</code> inner the <code>div</code>.</p>
+						<p>As use of Dropdown. To realize selector, you should add attribute <code>data-type="selector"</code> on the dropdown-toggle and add an <code>span</code> class of <code>dropdown-value</code> inside it.</p>
+						<p>For options list, ul should add class <code>dropdown-options</code>. And for option item, you can set value in <code>li > a</code> attribute <code>value</code>. If not set value, its value will be same as its html content.</p>
 						<pre>
-&lt;div class="progress"&gt;
-	&lt;button type="button" class="btn btn-primary <strong class="highlight">slider</strong>" <strong class="highlight">data-toggle="slider"</strong>&gt;&lt;/button&gt;
-&lt;/div&gt;
+&lt;button class="btn dropdown-toggle" data-toggle="dropdown" <strong class="highlight">data-type="selector"</strong>&gt;
+	<strong class="highlight">&lt;span class="dropdown-value"&gt;&lt;/span&gt;</strong>
+&lt;/button&gt;
+&lt;ul class="dropdown-menu <strong class="highlight">dropdown-options</strong>"&gt;
+	&lt;li&gt;&lt;a <strong class="highlight">value="yourValue"</strong>&gt;option&lt;/a&gt;&lt;/li&gt;
+	...
+&lt;/ul&gt;
 </pre>
 
 						<h3 id="h_options">Options</h3>
-						<p>Append the option name to <code>data-</code>, as in <code>data-min</code>.</p>
+						<p>Append the option name to <code>data-</code>, as in <code>data-to</code>.</p>
 						<table class="table table-bordered table-striped">
 							<thead>
 								<tr>
@@ -90,25 +102,25 @@
 							</thead>
 							<tbody>
 								<tr>
-									<td>value</td>
-									<td>number</td>
-									<td>0</td>
-									<td>Set the default value. (Only enable via Javascript.)</td>
+									<td>to</td>
+									<td>string</td>
+									<td></td>
+									<td>Set the target input element. When user change the select option, the value of target input element will also be changed.</td>
 								</tr>
 								<tr>
-									<td>min</td>
-									<td>number</td>
-									<td>null</td>
-									<td>Set the minimun value of the slider. It will only work when <code>max</code> is also setted.</td>
-								</tr>
-								<tr>
-									<td>max</td>
-									<td>number</td>
-									<td>null</td>
-									<td>Set the maximun value of the slider. It will only work when <code>min</code> is also setted.</td>
+									<td colspan="4">And other options is same to original Dropdown Component.</td>
 								</tr>
 							</tbody>
 						</table>
+						<pre>
+&lt;input <strong class="highlight">id="sel_tgt"</strong> type="hidden" /&gt;
+&lt;button class="btn dropdown-toggle" data-toggle="dropdown" data-type="selector" <strong class="highlight">data-to="#sel_tgt"</strong>&gt;
+	&lt;span class="dropdown-value"&gt;&lt;/span&gt;
+&lt;/button&gt;
+&lt;ul class="dropdown-menu dropdown-options"&gt;
+	...
+&lt;/ul&gt;
+</pre>
 
 						<h3 id="h_events">Events</h3>
 						<table class="table table-bordered table-striped">
@@ -122,16 +134,11 @@
 								<tr>
 									<td>change</td>
 									<td>
-										It will trigger when change its value. You can get value through <code>val()</code>.
+										It will trigger when change its value. It'll also trigger change event for <code>data-to</code> element.
 									</td>
 								</tr>
 							</tbody>
 						</table>
-												<pre>
-$("#element .slider").change(function(){
-	$(this).<strong class="highlight">val()</strong>;
-});
-</pre>
 					</div>
 				</div>
 			</div>

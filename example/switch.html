@@ -15,16 +15,11 @@
 
 		<script>
 			$(document).ready(function(){
-				$("#switch_demo").switch();
+				$("input[type='checkbox']").switch();
 
 				$("#switch_demo").change(function(){
 					$("input[type='text']").val($(this).prop('checked'));
 				});
-
-				$("#switch_demo_readonly").switch();
-				$("#switch_demo_readonly_checked").switch();
-				$("#switch_demo_disabled").switch();
-				$("#switch_demo_disabled_checked").switch();
 			});
 		</script>
 		<style>
