@@ -1,0 +1,98 @@
+.facebar {
+	display: inline-block;
+	padding: 5px;
+}
+
+.facebar.facebar-large {
+	padding: 8px;
+}
+
+.facebar.facebar-small {
+	padding: 4px;
+}
+
+.facebar.facebar-mini {
+	padding: 2px;
+}
+
+.facebar .facebar-head {
+	display: inline-block;
+	vertical-align: middle;
+	margin: 0 5px 0 0;
+	border: 1px solid #CCC;
+	border: 1px solid rgba(0, 0, 0, 0.3);
+	border-radius: 3px;
+	background: white;
+	background: rgba(255, 255, 255, 0.5);
+}
+
+.facebar.facebar-small .facebar-head {
+	margin-right: 3px;
+}
+
+.facebar.facebar-mini .facebar-head {
+	margin-right: 0px;
+}
+
+.facebar .facebar-head img {
+	height: 40px;
+	border: 1px solid #EEE;
+	border: 1px solid rgba(255, 255, 255, 0.5);
+	border-radius: 2px;
+}
+
+.facebar.facebar-large .facebar-head img {
+	height: 60px;
+}
+
+.facebar.facebar-small .facebar-head img {
+	height: 30px;
+}
+
+.facebar.facebar-mini .facebar-head img {
+	height: 25px;
+}
+
+.facebar .facebar-content {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.facebar .facebar-content h4 {
+	margin: 0 0 5px 0;
+	padding: 0;
+	text-align: left;
+}
+
+.facebar.facebar-large .facebar-content h4 {
+	font-size: 25px;
+	margin: 0 0 10px 0;
+}
+
+.facebar.facebar-small .facebar-content h4 {
+	font-size: 15px;
+	margin: 0 0 2px 0;
+	line-height: 100%;
+}
+
+.facebar.facebar-mini .facebar-content h4 {
+	font-size: 12px;
+	margin: 0 0 2px 0;
+	line-height: 100%;
+}
+
+.facebar .facebar-content p {
+	line-height: 110%;
+	margin: 0;
+	padding: 0;
+}
+
+.facebar.facebar-small .facebar-content p {
+	font-size: 11.9px;
+	line-height: 100%;
+}
+
+.facebar.facebar-mini .facebar-content p {
+	font-size: 10.5px;
+	line-height: 100%;
+}
