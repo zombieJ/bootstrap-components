@@ -1,7 +1,7 @@
 /*	this is to help hightlight target element with dark background.
 options:
-	title:			string				specify title of dialog.
-	content:		element				specify content of dialog.
+	title:			string				specify title of notification.
+	content:		element				specify content of notification.
 	position:		string				"left", "right", "top", "bottom". You can mix then up as "left,top" (it's same as "top,left")
 	type:			string				"normal", "warning", "info", "error", "success"
 	timeout:		number				default: 4000, hiden speed.
@@ -9,8 +9,7 @@ options:
 	queuetimeout:	number				default: 1000, hiden speed interval between 2 notification in same the region.
 	region:			string				default: "", saming region notification will not keep out other notification in same region.
 
-callback:			[function]			it will trigger event when user close this dialog by click the return button.
-										return boolean of confirm, and false of alert and close button.
+callback:			[function]			It will trigger when notification created.
 
 return:				[element]			return notification element
 */
@@ -79,6 +78,19 @@ $.extend({
 		$notification.hide();
 		$notification.fadeIn();
 
+		// fade out
+		function close() {
+			if(_list != null) _list.remove($notification);
+			$notification.fadeOut(function(){
+				$notification.remove();
+			});
+		}
+
+		$btn.click(function(){
+			close();
+			refreshAllRelated();
+		});
+
 		// auto fade out
 		$notification.stopAutoFadeOut = function() {
 			window.clearTimeout(_tt);
@@ -89,7 +101,7 @@ $.extend({
 
 				$notification.stopAutoFadeOut();
 				_tt = window.setTimeout(function(){
-					$btn.click();
+					close();
 				}, _inner_delay);
 			}
 		}
@@ -141,14 +153,10 @@ $.extend({
 		}
 		refreshAllRelated();
 
-		// fade out
-		$btn.click(function(){
-			$notification.fadeOut();
-			window.setTimeout(function(){
-				$notification.remove();
-				if(_list != null) _list.remove($notification);
-			}, 1000);
-		});
+		// call the callback
+		if(_callback != null) {
+			_callback.call($notification);
+		}
 
 		return $notification;
 	}
