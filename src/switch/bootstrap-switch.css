@@ -13,10 +13,28 @@
 
 	cursor: pointer;
 
-	-webkit-transition: all 0.2s linear;
-	-moz-transition: all 0.2s linear;
-	-o-transition: all 0.2s linear;
-	transition: all 0.2s linear;
+	-webkit-transition: all 0.3s linear;
+	-moz-transition: all 0.3s linear;
+	-o-transition: all 0.3s linear;
+	transition: all 0.3s linear;
+}
+
+.switch.readonly,
+.switch.readonly button,
+.switch.readonly label {
+	cursor: not-allowed;
+}
+
+.switch.disabled.on {
+	background: #B6D1D8;
+}
+
+.switch.disabled.on .label {
+	color: #EEE;
+}
+
+.switch.disabled.off .label {
+	color: #DDD;
 }
 
 .switch.on {
@@ -47,7 +65,7 @@
 }
 
 .switch.off .label {
-	color: #ccc;
+	color: #aaa;
 	text-shadow: 1px 1px 0 #fff;
 	text-align: right;
 }

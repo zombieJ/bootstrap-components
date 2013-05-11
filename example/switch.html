@@ -20,16 +20,34 @@
 				$("#switch_demo").change(function(){
 					$("input[type='text']").val($(this).prop('checked'));
 				});
+
+				$("#switch_demo_readonly").switch();
+				$("#switch_demo_readonly_checked").switch();
+				$("#switch_demo_disabled").switch();
+				$("#switch_demo_disabled_checked").switch();
 			});
 		</script>
 		<style>
 			body {
-				padding: 50px;
+				padding: 20px 50px;
 			}
 		</style>
 	</head>
 	<body>
-		<input id="switch_demo" type="checkbox" />
-		<input type="text">
+		<div>
+			<h3>Normal</h3>
+			<input id="switch_demo" type="checkbox" />
+			<input type="text" class="span1">
+		</div>
+		<div>
+			<h3>Readonly</h3>
+			<input id="switch_demo_readonly" type="checkbox" readonly />
+			<input id="switch_demo_readonly_checked" type="checkbox" readonly checked />
+		</div>
+		<div>
+			<h3>Disabled</h3>
+			<input id="switch_demo_disabled" type="checkbox" disabled />
+			<input id="switch_demo_disabled_checked" type="checkbox" disabled checked />
+		</div>
 	</body>
 </html>
