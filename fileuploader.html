@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Bootstrap Component Sample</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!-- jQuery -->
+		<script src="assets/jquery.js"></script>
+		<!-- Bootstrap -->
+		<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+		<link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+		<!-- src -->
+		<script src="assets/bootstrap-component.min.js"></script>
+		<link href="assets/bootstrap-component.min.css" rel="stylesheet" media="screen">
+		<!-- my -->
+		<link href="assets/main.css" rel="stylesheet" media="screen">
+
+		<script>
+			$(document).ready(function(){
+				$("#sidebar").floater({after: "#navbar", margin: 20, collapse: true});
+
+				$("#m_file").fileuploader({
+					type: "muti",
+					max: 2,
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div id="navbar" class="navbar navbar-fixed-top navbar-inverse">
+			<div class="navbar-inner">
+				<a class="brand" href="#">Bootstrap Component</a>
+				<ul class="nav">
+					<li><a href="index.html">Home</a></li>
+					<li><a href="darklight.html">Darklight</a></li>
+					<li><a href="datepicker.html">Datepicker</a></li>
+					<li><a href="dialog.html">Dialog</a></li>
+					<li><a href="dropdown.html">Dropdown</a></li>
+					<li class="active"><a href="fileuploader.html">Fileuploader</a></li>
+					<li><a href="floater.html">Floater</a></li>
+					<li><a href="slider.html">Slider</a></li>
+					<li><a href="switch.html">Switch</a></li>
+					<li><a href="notify.html">Notify</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div id="header">
+			<h1>Fileuploader</h1>
+			<p>Muti-file upload support component.</p>
+		</div>
+
+		<div class="container-fluid">
+			<div class="row-fluid">
+				<div class="span3 bs-docs-sidebar">
+					<ul id="sidebar" class="nav nav-tabs nav-stacked">
+						<li><a href="#h_example">Example</a></li>
+						<li><a href="#h_usage">Usage</a></li>
+						<li><a href="#h_options"> - Options</a></li>
+						<li><a href="#h_events"> - Events</a></li>
+					</ul>
+				</div>
+				<div class="span9 bs-docs-content">
+					<div class="page-header subcontent">
+						<div class="page-header">
+							<h1>Fileuploader
+								<small>bootstrap-fileuploader.js</small>
+							</h1>
+						</div>
+						<h2 id="h_example">Examples</h2>
+						<p>Fileuploader is used for muti-file upload support with bootstrap style.</p>
+						<div class="bs-docs-example" style="background-color: #f5f5f5;">
+							<input id="m_file" type="file" name="file[]" />
+						</div>
+
+						<h2 id="h_usage">Usage</h2>
+						<p>Enable fileuploader via JavaScript:</p>
+						<pre>
+$("#element").fileuploader(options);
+</pre>
+
+						<h3 id="h_options">Options</h3>
+						<p>Options should be passed via JavaScript.</p>
+						<table class="table table-bordered table-striped">
+							<thead>
+								<tr>
+									<th style="width: 100px;">Name</th>
+									<th style="width: 50px;">type</th>
+									<th style="width: 50px;">default</th>
+									<th>description</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>type</td>
+									<td>string</td>
+									<td>single</td>
+									<td>Set file uploader type. <code>single</code> means only could select one file. <code>muti</code> means could select muti-files.</td>
+								</tr>
+								<tr>
+									<td>max</td>
+									<td>number</td>
+									<td>-1</td>
+									<td>It's enabled when <code>type</code> is <code>muti</code>. It's for max number of files. <code>-1</code> means no limit number.</td>
+								</tr>
+							</tbody>
+						</table>
+
+						<h3 id="h_events">Events</h3>
+						<p>No events for fileuploader.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="footer">
+			<p>Build By <a href="https://github.com/DeadPeople">Dead People.</a></p>
+		</div>
+	</body>
+</html>

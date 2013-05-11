@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Bootstrap Component Sample</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!-- jQuery -->
+		<script src="assets/jquery.js"></script>
+		<!-- Bootstrap -->
+		<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+		<link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+		<!-- src -->
+		<script src="assets/bootstrap-component.min.js"></script>
+		<link href="assets/bootstrap-component.min.css" rel="stylesheet" media="screen">
+		<!-- my -->
+		<link href="assets/main.css" rel="stylesheet" media="screen">
+
+		<script>
+			$(document).ready(function(){
+				$("#sidebar").floater({after: "#navbar", margin: 20, collapse: true});
+			});
+		</script>
+	</head>
+	<body>
+		<div id="navbar" class="navbar navbar-fixed-top navbar-inverse">
+			<div class="navbar-inner">
+				<a class="brand" href="#">Bootstrap Component</a>
+				<ul class="nav">
+					<li><a href="index.html">Home</a></li>
+					<li><a href="darklight.html">Darklight</a></li>
+					<li><a href="datepicker.html">Datepicker</a></li>
+					<li><a href="dialog.html">Dialog</a></li>
+					<li><a href="dropdown.html">Dropdown</a></li>
+					<li><a href="fileuploader.html">Fileuploader</a></li>
+					<li><a href="floater.html">Floater</a></li>
+					<li class="active"><a href="slider.html">Slider</a></li>
+					<li><a href="switch.html">Switch</a></li>
+					<li><a href="notify.html">Notify</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div id="header">
+			<h1>Slider</h1>
+			<p>A simple slider bar.</p>
+		</div>
+
+		<div class="container-fluid">
+			<div class="row-fluid">
+				<div class="span3 bs-docs-sidebar">
+					<ul id="sidebar" class="nav nav-tabs nav-stacked">
+						<li><a href="#h_example">Example</a></li>
+						<li><a href="#h_usage">Usage</a></li>
+						<li><a href="#h_options"> - Options</a></li>
+						<li><a href="#h_events"> - Events</a></li>
+					</ul>
+				</div>
+				<div class="span9 bs-docs-content">
+					<div class="page-header subcontent">
+						<div class="page-header">
+							<h1>Slider
+								<small>bootstrap-slider.js</small>
+							</h1>
+						</div>
+						<h2 id="h_example">Examples</h2>
+						<p>Its value can be moved with the mouse.</p>
+						<div class="bs-docs-example" style="background-color: #f5f5f5;">
+							<div class="progress">
+								<button type="button" class="btn btn-primary slider" data-toggle="slider"></button>
+							</div>
+						</div>
+
+						<h2 id="h_usage">Usage</h2>
+						<p>Silder use <code>process</code> stylesheet. You need add <code>slider</code> class and <code>data-toggle="slider"</code> to the <code>button</code> inner the <code>div</code>.</p>
+						<pre>
+&lt;div class="progress"&gt;
+	&lt;button type="button" class="btn btn-primary <strong class="highlight">slider</strong>" <strong class="highlight">data-toggle="slider"</strong>&gt;&lt;/button&gt;
+&lt;/div&gt;
+</pre>
+
+						<h3 id="h_options">Options</h3>
+						<p>Append the option name to <code>data-</code>, as in <code>data-min</code>.</p>
+						<table class="table table-bordered table-striped">
+							<thead>
+								<tr>
+									<th style="width: 100px;">Name</th>
+									<th style="width: 50px;">type</th>
+									<th style="width: 50px;">default</th>
+									<th>description</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>value</td>
+									<td>number</td>
+									<td>0</td>
+									<td>Set the default value. (Only enable via Javascript.)</td>
+								</tr>
+								<tr>
+									<td>min</td>
+									<td>number</td>
+									<td>null</td>
+									<td>Set the minimun value of the slider. It will only work when <code>max</code> is also setted.</td>
+								</tr>
+								<tr>
+									<td>max</td>
+									<td>number</td>
+									<td>null</td>
+									<td>Set the maximun value of the slider. It will only work when <code>min</code> is also setted.</td>
+								</tr>
+							</tbody>
+						</table>
+
+						<h3 id="h_events">Events</h3>
+						<table class="table table-bordered table-striped">
+							<thead>
+								<tr>
+									<th style="width: 150px;">Event</th>
+									<th>Description</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>change</td>
+									<td>
+										It will trigger when change its value. You can get value through <code>val()</code>.
+									</td>
+								</tr>
+							</tbody>
+						</table>
+												<pre>
+$("#element .slider").change(function(){
+	$(this).<strong class="highlight">val()</strong>;
+});
+</pre>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="footer">
+			<p>Build By <a href="https://github.com/DeadPeople">Dead People.</a></p>
+		</div>
+	</body>
+</html>

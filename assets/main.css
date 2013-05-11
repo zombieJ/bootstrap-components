@@ -1,0 +1,119 @@
+.navbar {
+	margin-bottom: 0;
+}
+
+#header {
+	padding: 80px 0 40px 0;
+	margin-bottom: 20px;
+	text-align: center;
+	background: #020031;
+	background: -moz-linear-gradient(45deg, #020031 0%, #6d3353 100%);
+	background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#020031), color-stop(100%,#6d3353));
+	background: -webkit-linear-gradient(45deg, #020031 0%,#6d3353 100%);
+	background: -o-linear-gradient(45deg, #020031 0%,#6d3353 100%);
+	background: -ms-linear-gradient(45deg, #020031 0%,#6d3353 100%);
+	background: linear-gradient(45deg, #020031 0%,#6d3353 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#020031', endColorstr='#6d3353',GradientType=1 );
+}
+
+#header h1 {
+	font-size: 60px;
+	color: white;
+}
+
+#header p {
+	font-size: 30px;
+	margin-top: 30px;
+	color: white;
+}
+
+#sidebar {
+	width: 200px;
+}
+
+.page-header {
+	padding-top: 40px;
+}
+.page-header:first-child {
+	margin-top: -50px;
+}
+
+@media (max-width: 800px) {
+	#sidebar,
+	#sidebar.floater {
+		position: static;
+		width: 100%;
+	}
+
+	.span3.bs-docs-sidebar {
+		width: 100%;
+	}
+
+	.span3.bs-docs-sidebar span {
+		display: none;
+		margin: 0;
+		padding:0;
+	}
+
+	.span9.bs-docs-content {
+		width: 97%;
+	}
+}
+
+@media (min-width: 1200px) {
+	#sidebar {
+		width: 258px;
+	}
+}
+
+.footer {
+	border-top: 1px solid #ccc;
+	background: #F4F4F4;
+	padding: 10px;
+	text-align: center;
+}
+
+.footer p {
+	color: #aaa;
+}
+
+pre .highlight {
+	color: #aa0000;
+}
+
+.bs-docs-example {
+	position: relative;
+	margin: 15px 0;
+	padding: 39px 19px 14px;
+	background-color: #fff;
+	border: 1px solid #ddd;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+
+.bs-docs-example:after {
+	content: "Example";
+	position: absolute;
+	top: -1px;
+	left: -1px;
+	padding: 3px 7px;
+	font-size: 12px;
+	font-weight: bold;
+	background-color: #f5f5f5;
+	border: 1px solid #ddd;
+	color: #9da0a4;
+	-webkit-border-radius: 4px 0 4px 0;
+	-moz-border-radius: 4px 0 4px 0;
+	border-radius: 4px 0 4px 0;
+}
+
+.subcontent h2 {
+	padding-top: 40px;
+	margin-top: -40px;
+}
+
+.subcontent h3 {
+	padding-top: 40px;
+	margin-top: -40px;
+}

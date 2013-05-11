@@ -1,53 +1,103 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+	<head>
+		<title>Bootstrap Component Sample</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!-- jQuery -->
+		<script src="assets/jquery.js"></script>
+		<!-- Bootstrap -->
+		<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+		<link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+		<!-- src -->
+		<script src="assets/bootstrap-component.min.js"></script>
+		<link href="assets/bootstrap-component.min.css" rel="stylesheet" media="screen">
+		<!-- my -->
+		<link href="assets/main.css" rel="stylesheet" media="screen">
 
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+		<script>
+			$(document).ready(function(){
+				$("#sidebar").floater({after: "#navbar", margin: 20, collapse: true});
+			});
+		</script>
+	</head>
+	<body>
+		<div id="navbar" class="navbar navbar-fixed-top navbar-inverse">
+			<div class="navbar-inner">
+				<a class="brand" href="#">Bootstrap Component</a>
+				<ul class="nav">
+					<li class="active"><a href="index.html">Home</a></li>
+					<li><a href="darklight.html">Darklight</a></li>
+					<li><a href="datepicker.html">Datepicker</a></li>
+					<li><a href="dialog.html">Dialog</a></li>
+					<li><a href="dropdown.html">Dropdown</a></li>
+					<li><a href="fileuploader.html">Fileuploader</a></li>
+					<li><a href="floater.html">Floater</a></li>
+					<li><a href="slider.html">Slider</a></li>
+					<li><a href="switch.html">Switch</a></li>
+					<li><a href="notify.html">Notify</a></li>
+				</ul>
+			</div>
+		</div>
 
-    <title>Bootstrap-components by DeadPeople</title>
-  </head>
+		<div id="header">
+			<h1>Bootstrap Component</h1>
+			<p>Useful Components Designed For Bootstrap Style</p>
+		</div>
 
-  <body>
+		<div class="container-fluid">
+			<div class="row-fluid">
+				<div class="span3 bs-docs-sidebar">
+					<ul id="sidebar" class="nav nav-tabs nav-stacked">
+						<li><a href="#h_download">Download</a></li>
+						<li><a href="#h_use">How to use</a></li>
+						<li><a href="#h_about">About</a></li>
+					</ul>
+				</div>
+				<div class="span9 bs-docs-content">
+					<div id="h_download" class="page-header">
+						<h1>Download</h1>
+						<p class="lead">You have two type of bootstrap-compoents file for downloading.</p>
+						<div class="row-fluid">
+							<div class="span6">
+								<h2>Download compressed</h2>
+								<p style="height: 50px;">get the compressed file of source files.</p>
+								<a href="https://github.com/DeadPeople/bootstrap-components/zipball/master" class="btn btn-primary">Download as .zip</a>
+								<a href="https://github.com/DeadPeople/bootstrap-components/tarball/master" class="btn btn-primary">Download as .tar.gz</a>
+							</div>
+							<div class="span6">
+								<h2>Download source</h2>
+								<p style="height: 50px;">This plugin has already pushed on Github. You can fork the original source files.</p>
+								<a href="https://github.com/DeadPeople/bootstrap-components" class="btn btn-info">Go to Github</a>
+							</div>
+						</div>
+					</div>
 
-    <header>
-      <div class="container">
-        <h1>Bootstrap-components</h1>
-        <h2></h2>
+					<div id="h_use" class="page-header">
+						<h1>How to use it</h1>
+						<p class="lead">You need import the css and js file after original Bootstrap files.</p>
+						<pre class="">
+...
+&lt;script src="http://code.jquery.com/jquery.js"&gt;&lt;/script&gt;
+&lt;script src="js/bootstrap.min.js"&gt;&lt;/script&gt;
+&lt;link href="css/bootstrap.min.css" rel="stylesheet" media="screen"&gt;
 
-        <section id="downloads">
-          <a href="https://github.com/DeadPeople/bootstrap-components/zipball/master" class="btn">Download as .zip</a>
-          <a href="https://github.com/DeadPeople/bootstrap-components/tarball/master" class="btn">Download as .tar.gz</a>
-          <a href="https://github.com/DeadPeople/bootstrap-components" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
-        </section>
-      </div>
-    </header>
+&lt;-- Bootstrap Components Plugin --&gt;
+<strong class="highlight">&lt;script src="js/bootstrap-component.min.js"&gt;&lt;/script&gt;</strong>
+<strong class="highlight">&lt;link href="css/bootstrap-component.min.css" rel="stylesheet" media="screen"&gt;</strong>
+...
+</pre>
+					</div>
 
-    <div class="container">
-      <section id="main_content">
-        <h1>bootstrap-components</h1>
+					<div id="h_about" class="page-header">
+						<h1>About</h1>
+						<p class="lead">Bootstrap components plugin is not offical plugin. It comes from Bootstrap user who want to use the components in Bootstrap style. If you want to help bootstrap more components, please join me.</p>
+					</div>
+				</div>
+			</div>
+		</div>
 
-<p>This is design for additional component in Bootstrap.</p>
-
-<h2>Components List</h2>
-
-<ul>
-<li>darklight</li>
-<li>datapicker</li>
-<li>dialog</li>
-<li>dropdown</li>
-<li>fileuploader</li>
-<li>floater</li>
-<li>slider</li>
-<li>switch</li>
-<li>notify</li>
-</ul>
-      </section>
-    </div>
-
-    
-  </body>
+		<div class="footer">
+			<p>Build By <a href="https://github.com/DeadPeople">Dead People.</a></p>
+		</div>
+	</body>
 </html>
