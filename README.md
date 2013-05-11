@@ -11,3 +11,4 @@ This is design for additional component in Bootstrap.
 * floater
 * slider
 * switch
+* notify
