@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Bootstrap Component Sample</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!-- jQuery -->
+		<script src="assets/jquery.js"></script>
+		<!-- Bootstrap -->
+		<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+		<link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+		<!-- src -->
+		<script src="../src/common/bootstrap-common.js"></script>
+		<script src="../src/checkbox/bootstrap-checkbox.js"></script>
+		<link href="../src/checkbox/bootstrap-checkbox.css" rel="stylesheet" media="screen">
+
+		<script>
+			$(document).ready(function(){
+				
+			});
+		</script>
+		<style>
+			body {
+				padding: 20px 50px;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<h3>Normal</h3>
+			<label class="checkbox">
+				<input id="switch_demo" type="checkbox" class="hide" />
+				<button class="btn checkbox-mark">
+					<span class="icon-ok"></span>
+				</button>
+				Check Me!
+			</label>
+		</div>
+		<div>
+			<h3>Disabled</h3>
+			<label class="checkbox">
+				<input id="switch_demo" type="checkbox" class="hide" disabled />
+				<button class="btn checkbox-mark disabled">
+					<span class="icon-ok"></span>
+				</button>
+				Check Me!
+			</label>
+			<label class="checkbox">
+				<input id="switch_demo" type="checkbox" class="hide" disabled checked />
+				<button class="btn checkbox-mark disabled checked">
+					<span class="icon-ok"></span>
+				</button>
+				Check Me!
+			</label>
+		</div>
+	</body>
+</html>
