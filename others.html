@@ -50,6 +50,8 @@
 				<div class="span3 bs-docs-sidebar">
 					<ul id="sidebar" class="nav nav-tabs nav-stacked">
 						<li><a href="#h_facebar">Facebar</a></li>
+						<li><a href="#h_checkbox">Checkbox</a></li>
+						<li><a href="#h_radio">Radio</a></li>
 					</ul>
 				</div>
 				<div class="span9 bs-docs-content">
@@ -59,7 +61,7 @@
 								<small>bootstrap-facebar.css</small>
 							</h1>
 						</div>
-						<h2 id="h_example">Examples</h2>
+						<h2>Examples</h2>
 						<p>Facebar is simple css component for head with content.</p>
 						<div class="bs-docs-example" style="background-color: #f5f5f5;">
 							<div class="facebar facebar-large btn btn-primary">
@@ -103,7 +105,7 @@
 							</div>
 						</div>
 
-						<h2 id="h_usage">Usage</h2>
+						<h2>Usage</h2>
 						<p>Use <code>facebar</code> class for the top div. Set head class as <code>facebar-head</code> and content class as <code>facebar-content</code>.</p>
 						<pre>
 &lt;div class="<strong class="highlight">facebar</strong> btn btn-primary"&gt;
@@ -119,7 +121,90 @@
 
 					</div>
 
-					
+					<div class="page-header subcontent">
+						<div id="h_checkbox" class="page-header">
+							<h1>Checkbox
+								<small>bootstrap-checkbox.js</small>
+							</h1>
+						</div>
+						<h2>Examples</h2>
+						<p>Checkbox is enhanced UI for original checkbox.</p>
+						<div class="bs-docs-example" style="background-color: #f5f5f5;">
+							<label class="checkbox">
+								<input type="checkbox" class="hide" />
+								<button class="btn mark">
+									<span class="icon-ok"></span>
+								</button>
+								Check Me!
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="hide" disabled checked />
+								<button class="btn mark disabled checked">
+									<span class="icon-ok"></span>
+								</button>
+								Diabled Checkbox
+							</label>
+						</div>
+
+						<h2>Usage</h2>
+						<p>Add <code>hide</code> class for the original checkbox. And add a <code>button</code> classed <code>mark</code> for the new checkbox.</p>
+						<pre>
+&lt;label class="checkbox"&gt;
+	&lt;input type="checkbox" class="<strong class="highlight">hide</strong>" /&gt;
+	&lt;button class="btn <strong class="highlight">mark</strong>"&gt;
+		&lt;span class="icon-ok"&gt;&lt;/span&gt;
+	&lt;/button&gt;
+	Check Me!
+&lt;/label&gt;
+</pre>
+
+					</div>
+
+					<div class="page-header subcontent">
+						<div id="h_radio" class="page-header">
+							<h1>Radio
+								<small>bootstrap-radio.js</small>
+							</h1>
+						</div>
+						<h2>Examples</h2>
+						<p>Radio is enhanced UI for original radio.</p>
+						<div class="bs-docs-example" style="background-color: #f5f5f5;">
+							<label class="radio">
+								<input type="radio" name="normal" class="hide" />
+								<button class="btn mark">
+									<span class="icon2-circle-mini"></span>
+								</button>
+								Check Me!
+							</label>
+							<label class="radio">
+								<input type="radio" name="normal" class="hide" />
+								<button class="btn mark">
+									<span class="icon2-circle-mini"></span>
+								</button>
+								Check Me!
+							</label>
+							<label class="radio">
+								<input type="radio" name="normal" class="hide" disabled />
+								<button class="btn mark disabled">
+									<span class="icon2-circle-mini"></span>
+								</button>
+								Disabled
+							</label>
+						</div>
+
+						<h2>Usage</h2>
+						<p>Add <code>hide</code> class for the original radio. And add a <code>button</code> classed <code>mark</code> for the new radio.</p>
+						<pre>
+&lt;label class="radio"&gt;
+	&lt;input type="radio" class="<strong class="highlight">hide</strong>" /&gt;
+	&lt;button class="btn <strong class="highlight">mark</strong>"&gt;
+		&lt;span class="icon2-circle-mini"&gt;&lt;/span&gt;
+	&lt;/button&gt;
+	Check Me!
+&lt;/label&gt;
+</pre>
+
+					</div>
 				</div>
 			</div>
 		</div>
