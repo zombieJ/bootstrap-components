@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Bootstrap Component Sample</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!-- jQuery -->
+		<script src="assets/jquery.js"></script>
+		<!-- Bootstrap -->
+		<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+		<link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+		<!-- src -->
+		<script src="assets/bootstrap-components/js/bootstrap-component.min.js"></script>
+		<link href="assets/bootstrap-components/css/bootstrap-component.min.css" rel="stylesheet" media="screen">
+		<!-- my -->
+		<link href="assets/main.css" rel="stylesheet" media="screen">
+
+		<script>
+			$(document).ready(function(){
+				$("#sidebar").floater({after: "#navbar", margin: 20, collapse: true});
+			});
+		</script>
+	</head>
+	<body>
+		<div id="navbar" class="navbar navbar-fixed-top navbar-inverse">
+			<div class="navbar-inner">
+				<a class="brand" href="#">Bootstrap Component</a>
+				<ul class="nav">
+					<li><a href="index.html">Home</a></li>
+					<li><a href="darklight.html">Darklight</a></li>
+					<li><a href="datepicker.html">Datepicker</a></li>
+					<li><a href="dialog.html">Dialog</a></li>
+					<li><a href="dropdown.html">Dropdown</a></li>
+					<li><a href="fileuploader.html">Fileuploader</a></li>
+					<li><a href="floater.html">Floater</a></li>
+					<li><a href="slider.html">Slider</a></li>
+					<li><a href="switch.html">Switch</a></li>
+					<li><a href="notify.html">Notify</a></li>
+					<li class="active"><a href="others.html">Others</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div id="header">
+			<h1>Others</h1>
+			<p>Other components for Bootstrap.</p>
+		</div>
+
+		<div class="container-fluid">
+			<div class="row-fluid">
+				<div class="span3 bs-docs-sidebar">
+					<ul id="sidebar" class="nav nav-tabs nav-stacked">
+						<li><a href="#h_facebar">Facebar</a></li>
+					</ul>
+				</div>
+				<div class="span9 bs-docs-content">
+					<div class="page-header subcontent">
+						<div id="h_facebar" class="page-header">
+							<h1>Facebar
+								<small>bootstrap-facebar.css</small>
+							</h1>
+						</div>
+						<h2 id="h_example">Examples</h2>
+						<p>Facebar is simple css component for head with content.</p>
+						<div class="bs-docs-example" style="background-color: #f5f5f5;">
+							<div class="facebar facebar-large btn btn-primary">
+								<div class="facebar-head">
+									<img src="https://secure.gravatar.com/avatar/28db93d814ca44ead94ad1d3b7fb3c53" />
+								</div>
+								<div class="facebar-content">
+									<h4>Dead People</h4>
+									<p>It's facebar time! You can set as user head box.</p>
+								</div>
+							</div>
+							<br /><br />
+							<div class="facebar btn btn-info">
+								<div class="facebar-head">
+									<img src="https://secure.gravatar.com/avatar/28db93d814ca44ead94ad1d3b7fb3c53" />
+								</div>
+								<div class="facebar-content">
+									<h4>Dead People</h4>
+									<p>It's facebar time! You can set as user head box.</p>
+								</div>
+							</div>
+							<br /><br />
+							<div class="facebar facebar-small btn btn-warning">
+								<div class="facebar-head">
+									<img src="https://secure.gravatar.com/avatar/28db93d814ca44ead94ad1d3b7fb3c53" />
+								</div>
+								<div class="facebar-content">
+									<h4>Dead People</h4>
+									<p>It's facebar time! You can set as user head box.</p>
+								</div>
+							</div>
+							<br /><br />
+							<div class="facebar facebar-mini btn btn-danger">
+								<div class="facebar-head">
+									<img src="https://secure.gravatar.com/avatar/28db93d814ca44ead94ad1d3b7fb3c53" />
+								</div>
+								<div class="facebar-content">
+									<h4>Dead People</h4>
+									<p>It's facebar time! You can set as user head box.</p>
+								</div>
+							</div>
+						</div>
+
+						<h2 id="h_usage">Usage</h2>
+						<p>Use <code>facebar</code> class for the top div. Set head class as <code>facebar-head</code> and content class as <code>facebar-content</code>.</p>
+						<pre>
+&lt;div class="<strong class="highlight">facebar</strong> btn btn-primary"&gt;
+	&lt;div class="<strong class="highlight">facebar-head</strong>"&gt;
+		&lt;img src="https://secure.gravatar.com/avatar/28db93d814ca44ead94ad1d3b7fb3c53" /&gt;
+	&lt;/div&gt;
+	&lt;div class="<strong class="highlight">facebar-content</strong>"&gt;
+		&lt;h4&gt;Dead People&lt;/h4&gt;
+		&lt;p&gt;It's facebar time! You can set as user head box.&lt;/p&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+
+					</div>
+
+					
+				</div>
+			</div>
+		</div>
+
+		<div class="footer">
+			<p>Build By <a href="https://github.com/DeadPeople">Dead People.</a></p>
+		</div>
+	</body>
+</html>
