@@ -1,0 +1,19 @@
+.radio > .radio-mark {
+	padding: 1px 1px 0px 1px;
+	margin: 0 0 3px -20px;
+	vertical-align: middle;
+	line-height: 100%;
+	border-radius: 20px;
+}
+
+.radio > .radio-mark > span {
+	margin: 0;
+}
+
+.radio > .radio-mark > span {
+	visibility:hidden;
+}
+
+.radio > .radio-mark.checked > span {
+	visibility:visible;
+}

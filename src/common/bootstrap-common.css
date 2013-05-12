@@ -1,0 +1,19 @@
+[class^="icon2-"], [class*=" icon2-"] {
+display: inline-block;
+width: 14px;
+height: 14px;
+margin-top: 1px;
+line-height: 14px;
+vertical-align: text-top;
+background-image: url("../img/dp-glyphicons-halflings.png");
+background-position: 14px 14px;
+background-repeat: no-repeat;
+}
+
+.icon2-circle {
+	background-position: 0 0;
+}
+
+.icon2-circle-mini {
+	background-position: -24px 0;
+}
