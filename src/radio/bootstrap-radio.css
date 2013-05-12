@@ -1,4 +1,4 @@
-.radio > .radio-mark {
+.radio > .btn.mark {
 	padding: 1px 1px 0px 1px;
 	margin: 0 0 3px -20px;
 	vertical-align: middle;
@@ -6,14 +6,14 @@
 	border-radius: 20px;
 }
 
-.radio > .radio-mark > span {
+.radio > .btn.mark > span {
 	margin: 0;
 }
 
-.radio > .radio-mark > span {
+.radio > .btn.mark > span {
 	visibility:hidden;
 }
 
-.radio > .radio-mark.checked > span {
+.radio > .btn.mark.checked > span {
 	visibility:visible;
 }

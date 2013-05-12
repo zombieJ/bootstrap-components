@@ -1,14 +1,14 @@
-.checkbox > .checkbox-mark {
+.checkbox > .btn.mark {
 	padding: 1px;
 	margin: 0 0 3px -20px;
 	vertical-align: middle;
 	line-height: 100%;
 }
 
-.checkbox > .checkbox-mark > span {
+.checkbox > .btn.mark > span {
 	visibility:hidden;
 }
 
-.checkbox > .checkbox-mark.checked > span {
+.checkbox > .btn.mark.checked > span {
 	visibility:visible;
 }
