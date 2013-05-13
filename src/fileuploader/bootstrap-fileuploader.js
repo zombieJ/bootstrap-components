@@ -1,6 +1,6 @@
 /* options:
 	type:		single			enable only one file to upload[default]
-				muti			enable muti files to upload
+				multi			enable multi files to upload
 
 	max:		<number>		Set maximun number of files
 */
@@ -12,11 +12,11 @@ $.fn.extend({
 		var vars = $._bc.vars(options);
 		var _options = vars.options;
 
-		var _muti_upload = false;
+		var _multi_upload = false;
 		var _max = $._bc.get(_options, "max", -1);
 
-		if($._bc.get(_options, "type", "single") == "muti") {
-			_muti_upload = true;
+		if($._bc.get(_options, "type", "single") == "multi") {
+			_multi_upload = true;
 		}
 
 		var my = $(this);
@@ -50,7 +50,7 @@ $.fn.extend({
 		}
 
 		function refreshEnable() {
-			if(_muti_upload) {
+			if(_multi_upload) {
 				var _fileNum = $files_region.find(".fileuploader-item input[type='file']").length;
 				if(_max != -1 && _fileNum >= _max) {
 					$button.attr("disabled", "disabled");
@@ -84,7 +84,7 @@ $.fn.extend({
 			return false;
 		}
 
-		if(!_muti_upload) {		// if enable upload one file
+		if(!_multi_upload) {		// if enable upload one file
 			markUploader(my, function(){
 				var filename = getFilename($(this).val());
 				$tips.html(filename);
@@ -157,7 +157,7 @@ $.fn.extend({
 		}
 
 		$button.click(function(){
-			if(_muti_upload) {
+			if(_multi_upload) {
 				var $file = my.clone();
 				markUploader($file, function(){
 					addFileMark($(this));
