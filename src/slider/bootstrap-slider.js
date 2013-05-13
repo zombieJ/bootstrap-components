@@ -36,6 +36,24 @@ $.fn.extend({
 	var process;
 	var tgt;
 	var _innerLeft;
+	var _click_slider = false;
+
+	function sliderGo(tgt, _curLeft, _total_width) {
+		if(_curLeft < 0) _curLeft = 0;
+		if(_curLeft > _total_width) _curLeft = _total_width;
+		tgt.css("margin-left", _curLeft + "px");
+
+		var _min = parseInt(tgt.attr("data-min"), 10);
+		var _max = parseInt(tgt.attr("data-max"), 10);
+		if(!isNaN(_min) && !isNaN(_max) && _min < _max) {
+			tgt.val(_curLeft / _total_width * (_max - _min));
+		} else {
+			tgt.val((_curLeft / _total_width * 100) + "%");
+		}
+
+		// raise change event
+		tgt.change();
+	}
 
 	// mouse down
 	$(document).on("mousedown.bootstrapcomponent.slider", "button[data-toggle='slider']", function(event){
@@ -53,24 +71,36 @@ $.fn.extend({
 		var _process_width = process.outerWidth();
 		var _total_width = _process_width - _tgt_width;
 		var _curLeft = event.pageX - process.offset().left - _innerLeft;
-		if(_curLeft < 0) _curLeft = 0;
-		if(_curLeft > _total_width) _curLeft = _total_width;
-		tgt.css("margin-left", _curLeft + "px");
 
-		var _min = parseInt(tgt.attr("data-min"), 10);
-		var _max = parseInt(tgt.attr("data-max"), 10);
-		if(!isNaN(_min) && !isNaN(_max) && _min < _max) {
-			tgt.val(_curLeft / _total_width * (_max - _min));
-		} else {
-			tgt.val((_curLeft / _total_width * 100) + "%");
-		}
-
-		// raise change event
-		tgt.change();
+		sliderGo(tgt, _curLeft, _total_width);
 	});
 
 	// mouse up
 	$(document).on("mouseup.bootstrapcomponent.slider", function(event){
 		mouse_down = false;
+	});
+
+	// mouse click
+	$(document).on("click.bootstrapcomponent.slider", ".progress", function(event){
+		if(_click_slider) {
+			_click_slider = false;
+			return;
+		}
+
+		var process = $(this);
+		$(this).find("button.slider").each(function(){
+			var _my = $(this);
+			var _tgt_width = _my.outerWidth();
+			var _process_width = process.outerWidth();
+			var _total_width = _process_width - _tgt_width;
+			var _curLeft = event.pageX - process.offset().left - _tgt_width / 2;
+
+			sliderGo(_my, _curLeft, _total_width);
+		});
+	});
+
+	// slider click
+	$(document).on("click.bootstrapcomponent.slider", "button.slider", function(event){
+		_click_slider = true;
 	});
 }(window.jQuery);
