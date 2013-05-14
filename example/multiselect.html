@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Bootstrap Component Sample</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!-- jQuery -->
+		<script src="assets/jquery.js"></script>
+		<!-- Bootstrap -->
+		<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+		<link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+		<!-- src -->
+		<script src="../src/common/bootstrap-common.js"></script>
+		<script src="../src/multiselect/bootstrap-multiselect.js"></script>
+		<link href="../src/multiselect/bootstrap-multiselect.css" rel="stylesheet" media="screen">
+
+		<script>
+			$(document).ready(function(){
+				$("select").multiselect();
+			});
+		</script>
+	</head>
+	<body>
+		<select name="sel1">
+			<option value ="Abs">Abs</option>
+			<option value ="volvo">Volvo</option>
+			<option value ="saab">Saab</option>
+			<option value="opel">Opel</option>
+			<option value="audi">Audi</option>
+		</select>
+		<select name="sel2">
+			<option value ="volvo">Volvo</option>
+			<option value ="saab">Saab</option>
+			<option value="opel">Opel</option>
+			<option value="audi">Audi</option>
+		</select>
+		<div class="multiselect-tag alert">
+			<button type="button" class="close" data-dismiss="alert">¡Á</button>
+			<span>HAHAHAHA</span>
+		</div>
+	</body>
+</html>
