@@ -4,6 +4,10 @@
 	collapse:	[boolean]			create a span to fill the ori element position, default is false
 */
 
+// init env
+$._bc.vals.multiselect = new Object();
+$._bc.vals.multiselect.index = 1;
+
 // init function
 $.fn.extend({
 	multiselect:function(options, callback){
@@ -14,6 +18,10 @@ $.fn.extend({
 
 		$(this).each(function(){
 			var my = $(this);
+
+			var _index = $._bc.vals.multiselect.index;
+			$._bc.vals.multiselect.index++;
+			var _showList = false;
 
 			// create input instead of ori-select
 			var $input = $("<input type='text' />");
@@ -33,12 +41,42 @@ $.fn.extend({
 				$list.append($li);
 			});
 
+			// refresh list by key
+			function refreshList(key) {
+				var _key = key.toUpperCase();
+
+				$list.empty();
+				my.find("option").each(function(){
+					var _opt = $(this).html();
+
+					if(_opt.toUpperCase().indexOf(_key) != -1) {
+						var $li = $("<li>");
+						var $a = $("<a>");
+						$a.html(_opt);
+						$li.append($a);
+						$list.append($li);
+					}
+				});
+			}
+
 			$input.keyup(function(){
-				$list.addClass("selected");
-				$list.outerWidth($(this).outerWidth());
-				var pos = $(this).position();
-				$list.css("top", (pos.top + $(this).outerHeight()) + "px");
-				$list.css("left", pos.left + "px");
+				// show tips
+				if(!_showList) {
+					_showList = true;
+
+					$list.addClass("selected");
+					$list.outerWidth($(this).outerWidth());
+					var pos = $(this).position();
+					$list.css("top", (pos.top + $(this).outerHeight()) + "px");
+					$list.css("left", pos.left + "px");
+
+					$(document).bind('click.multiselect' + _index, function(event){
+						$list.removeClass("selected");
+					});
+				}
+
+				// show related options
+				refreshList($(this).val());
 			});
 		});
 	}
