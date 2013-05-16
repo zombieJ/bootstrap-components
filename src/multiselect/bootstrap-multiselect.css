@@ -14,6 +14,20 @@ ul.dropdown-menu.multiselect-menu a {
 	padding-left: 10px;
 }
 
+.multiselect-labels {
+	display: inline-block;
+}
+
 .multiselect-tag {
-	
+	padding: 0;
+	margin: 0;
+	line-height: 100%;
+}
+
+.multiselect-tag .close {
+	right: 0;
+}
+
+.multiselect-tag span {
+	line-height: 100%;
 }

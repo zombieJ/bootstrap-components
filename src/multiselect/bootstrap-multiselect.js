@@ -32,6 +32,9 @@ $.fn.extend({
 			var $list = $("<ul class='dropdown-menu multiselect-menu'>");
 			$list.insertAfter($input);
 
+			var $labels = $("<div class='multiselect-labels'>");
+			$labels.insertAfter($input);
+
 			// options list
 			my.find("option").each(function(){
 				var $li = $("<li>");
@@ -55,6 +58,16 @@ $.fn.extend({
 						$a.html(_opt);
 						$li.append($a);
 						$list.append($li);
+
+						$li.click(function(){
+							var $label = $("<div class='multiselect-tag alert'>");
+							var $btn = $("<button type='button' class='close' data-dismiss='alert'>¡Á</button>");
+							var $span = $("<span>");
+							$span.html($(this).find("a").html());
+							$label.append($btn);
+							$label.append($span);
+							$labels.append($label);
+						});
 					}
 				});
 			}
@@ -72,6 +85,7 @@ $.fn.extend({
 
 					$(document).bind('click.multiselect' + _index, function(event){
 						$list.removeClass("selected");
+						_showList = false;
 					});
 				}
 
