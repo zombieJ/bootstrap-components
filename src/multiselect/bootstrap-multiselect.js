@@ -60,7 +60,7 @@ $.fn.extend({
 						$list.append($li);
 
 						$li.click(function(){
-							var $label = $("<div class='multiselect-tag alert'>");
+							var $label = $("<div class='multiselect-tag alert alert-info'>");
 							var $btn = $("<button type='button' class='close' data-dismiss='alert'>¡Á</button>");
 							var $span = $("<span>");
 							$span.html($(this).find("a").html());
