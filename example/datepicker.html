@@ -12,22 +12,31 @@
 		<script src="../src/common/bootstrap-common.js"></script>
 		<script src="../src/datepicker/bootstrap-datepicker.js"></script>
 		<link href="../src/datepicker/bootstrap-datepicker.css" rel="stylesheet" media="screen">
+
+		<script>
+			$(document).ready(function(){
+				$("#appended_change").change(function(){
+					$("#lb_tips").html($(this).val());
+				});
+			});
+		</script>
 	</head>
 	<body>
 		<div class="input-append">
-			<input class="datepicker" id="datepicker" data-toggle="datepicker" type="text" style="width: 140px;">
+			<input id="datepicker" type="text" style="width: 140px;">
 			<button class="btn" data-toggle="datepicker" data-to="#datepicker"><i class="icon-calendar"></i></button>
 		</div>
 		<div class="input-append">
-			<input class="datepicker" id="datepicker_date" type="text" style="width: 140px;">
+			<input id="datepicker_date" type="text" style="width: 140px;">
 			<button class="btn" data-toggle="datepicker" data-to="#datepicker_date" data-type="dater"><i class="icon-calendar"></i></button>
 		</div>
 		<div class="input-append">
-			<input class="datepicker" id="datepicker_time" type="text" style="width: 140px;">
+			<input id="datepicker_time" type="text" style="width: 140px;">
 			<button class="btn" data-toggle="datepicker" data-to="#datepicker_time" data-type="timer"><i class="icon-time"></i></button>
 		</div>
 		<div>
-			<input class="datepicker" id="appendedInput" type="text" style="width: 140px;" data-toggle="datepicker">
+			<input id="appended_change" type="text" style="width: 140px;" data-toggle="datepicker">
+			<span id="lb_tips"></span>
 		</div>
 	</body>
 </html>
