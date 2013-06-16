@@ -12,43 +12,21 @@
 		<script src="../src/common/bootstrap-common.js"></script>
 		<script src="../src/datepicker/bootstrap-datepicker.js"></script>
 		<link href="../src/datepicker/bootstrap-datepicker.css" rel="stylesheet" media="screen">
-
-		<script>
-			$(document).ready(function(){
-				$("#datepicker").datepicker({
-					target: "all",
-				});
-				$("#datepicker_date").datepicker({
-					target: "dater",
-				});
-				$("#datepicker_time").datepicker({
-					target: "timer",
-				});
-
-				$("#datepicker_nobutton").datepicker();
-				$("#datepicker_nobutton input").change(function(){
-					alert("Date Change!");
-				});
-			});
-		</script>
 	</head>
 	<body>
-		<div id="datepicker" class="input-append">
-			<input class="datepicker" id="appendedInput" type="text" style="width: 140px;">
-			<button class="btn" data-toggle="datepicker" href="#"><i class="icon-time"></i></button>
+		<div class="input-append">
+			<input class="datepicker" id="datepicker" data-toggle="datepicker" type="text" style="width: 140px;">
+			<button class="btn" data-toggle="datepicker" data-to="#datepicker"><i class="icon-calendar"></i></button>
 		</div>
-
-		<div id="datepicker_date" class="input-append">
-			<input class="datepicker" id="appendedInput" type="text" style="width: 140px;">
-			<button class="btn" data-toggle="datepicker" href="#"><i class="icon-time"></i></button>
+		<div class="input-append">
+			<input class="datepicker" id="datepicker_date" type="text" style="width: 140px;">
+			<button class="btn" data-toggle="datepicker" data-to="#datepicker_date" data-type="dater"><i class="icon-calendar"></i></button>
 		</div>
-
-		<div id="datepicker_time" class="input-append">
-			<input class="datepicker" id="appendedInput" type="text" style="width: 140px;">
-			<button class="btn" data-toggle="datepicker" href="#"><i class="icon-time"></i></button>
+		<div class="input-append">
+			<input class="datepicker" id="datepicker_time" type="text" style="width: 140px;">
+			<button class="btn" data-toggle="datepicker" data-to="#datepicker_time" data-type="timer"><i class="icon-time"></i></button>
 		</div>
-
-		<div id="datepicker_nobutton">
+		<div>
 			<input class="datepicker" id="appendedInput" type="text" style="width: 140px;" data-toggle="datepicker">
 		</div>
 	</body>

@@ -2,6 +2,13 @@
 	width: 242px;
 	margin: 0;
 	position: absolute;
+	white-space: normal;
+}
+
+.datepicker .btn,
+.datepicker .btn:last-child,
+.datepicker input[type='text'] {
+	border-radius: 4px;
 }
 
 /* ----- Date Picker ----- */
@@ -91,7 +98,9 @@
 	padding-top: 5px;
 	text-align: center;
 	font-size: 12px;
+	line-height: 100%;
 	color: gray;
+	margin-top: 0px;
 }
 
 /* ----- Picker Spilter ----- */

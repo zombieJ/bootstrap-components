@@ -11,33 +11,33 @@ $._bc.vals.datepicker = new Object();
 $._bc.vals.datepicker.index = 1;
 
 // init function
-$.fn.extend({
-	datepicker:function(options){
-		// get options
-		var my = $(this);
-		var vars = $._bc.vars(options);
-		var _options = vars.options;
-
+!function ($) {
+	$(document).on("click.bootstrapcomponent.datepicker", "[data-toggle='datepicker']", function(event){
 		var _index = $._bc.vals.datepicker.index;
 		$._bc.vals.datepicker.index++;
 
-		var date = $._bc.get(_options, "date", new Date());
+		var my = $(this);
+		var $input = $(this);
+
+		var date = new Date();
+
+		var _target = my.attr("data-to");
+		if(_target != null) $input = $(_target);
+
 		var enable_datepicker = false;
 		var enable_timepicker = false;
-		if($._bc.get(_options, "target", "all") == "all" || $._bc.get(_options, "target", "all") == "dater") {
-			enable_datepicker = true;
-		}
-		if($._bc.get(_options, "target", "all") == "all" || $._bc.get(_options, "target", "all") == "timer") {
-			enable_timepicker = true;
-		}
+		var _type = my.attr("data-type");
+		if(_type == null) _type = "all";
+		if(_type == "all" || _type == "dater") enable_datepicker = true;
+		if(_type == "all" || _type == "timer") enable_timepicker = true;
 
-		function dd(str) {
+		function dd(str) {						// format "7" number as "07"
 			str = str + "";
 			if(str.length == 1)
 				return "0" + str;
 			return str;
 		}
-		function formatDate(date, outer) {		//get string as date
+		function formatDate(date, outer) {		// get string as date, outer is the output text
 			var str_date = "";
 			var show_date = outer == null || (enable_datepicker && outer == true);
 			var show_time = outer == null || (enable_timepicker && outer == true);
@@ -47,8 +47,7 @@ $.fn.extend({
 				str_date += dd(date.getHours()) + ":" + dd(date.getMinutes()) + ":" + dd(date.getSeconds());
 			return str_date;
 		}
-
-		function getDate(str) {					//get date by input
+		function getDate(str) {					// get date by input string
 			var _date;
 			try {
 				if(str.match(/^\d+:\d+:\d+/)) str = "1990-09-03 " + str;
@@ -62,12 +61,8 @@ $.fn.extend({
 			}
 		}
 
-		// init view
-		var $input = $(this).find(".datepicker");
-		$input.val(formatDate(date, true));
-
-		var $btn = $(this).find("[data-toggle='datepicker']");
-		$btn.click(function(event){
+		// ----- start click logic -----
+		{
 			// record pre date
 			var _pre_date = $input.val();
 
@@ -76,9 +71,13 @@ $.fn.extend({
 
 			if(my.data("datepicker") == null) {
 				var $datepicker = $("<div class='datepicker modal'>");
-				$datepicker.insertAfter(my);
+				// insert datepick. Add to my parent, if it is in .input-append.
+				if(my.parent().hasClass("input-append"))
+					$datepicker.insertAfter(my.parent());
+				else
+					$datepicker.insertAfter(my);
 
-				var pos = $(this).position();
+				var pos = $input.position();
 				$datepicker.css("left", pos.left + "px");
 				$datepicker.css("top", (pos.top + $(this).outerHeight()) + "px");
 
@@ -98,7 +97,7 @@ $.fn.extend({
 				$date_days.append("<span>Thur</span>");
 				$date_days.append("<span>Fri</span>");
 				$date_days.append("<span>Sat</span>");
-				var $date_dates = $("<div>");
+				var $date_dates = $("<div datepicker-dates>");
 
 				$date.appendTo($datepicker);
 				$date_head.appendTo($date);
@@ -257,16 +256,6 @@ $.fn.extend({
 						$input.change();
 				});
 			}
-		});
-
-		my.click(function(event){
-			hideView();
-		});
-		function hideView() {
-			if(my.data("datepicker") == true) {
-				my.data("stop", true);
-			} else {
-			}
 		}
-	}
-});
+	});
+}(window.jQuery);
