@@ -85,9 +85,9 @@ $._bc.vals.datepicker.index = 1;
 				// date model
 				var $date = $("<div class='datepicker-date'>");
 				var $date_head  = $("<div class='datepicker-head'>");
-				var $date_left = $("<button class='btn btn-primary btn-small datepicker-month-left'><i class='icon-chevron-left  icon-white'></i></button>");
+				var $date_left = $("<button type='button' class='btn btn-primary btn-small datepicker-month-left'><i class='icon-chevron-left  icon-white'></i></button>");
 				var $date_content = $("<h5></h5>");
-				var $date_right = $("<button class='btn btn-primary btn-small datepicker-month-right'><i class='icon-chevron-right  icon-white'></i></button>");
+				var $date_right = $("<button type='button' class='btn btn-primary btn-small datepicker-month-right'><i class='icon-chevron-right  icon-white'></i></button>");
 				var $date_body = $("<div class='datepicker-body'>");
 				var $date_days = $("<div class='datepicker-days'>");
 				$date_days.append("<span>Sun</span>");
@@ -143,13 +143,13 @@ $._bc.vals.datepicker.index = 1;
 					$date_dates.empty();
 					var _gsd = getStartDay(_date);
 					for(var i = 0 ; i < _gsd ; i++) {
-						$btn = $("<button class='btn'></button>");
+						$btn = $("<button type='button' class='btn'></button>");
 						$btn.css("visibility", "hidden");
 						$btn.appendTo($date_dates);
 					}
 					var _gtd = getTotalDays(_date);
 					for(var i = 1 ; i <= _gtd ; i++) {
-						$btn = $("<button class='btn'>"+i+"</button>");
+						$btn = $("<button type='button' class='btn'>"+i+"</button>");
 						$btn.appendTo($date_dates);
 
 						// set target date as mark
@@ -178,8 +178,8 @@ $._bc.vals.datepicker.index = 1;
 				function genTimeUnit(type, max) {
 					var $unit = $("<div class='datepicker-"+type+"'>");
 					var $input = $("<input type='text' maxlength='2' />");
-					var $unit_minus = $("<button class='btn'><i class='icon-minus'></i></button>");
-					var $unit_plus = $("<button class='btn'><i class='icon-plus'></i></button>");
+					var $unit_minus = $("<button type='button' class='btn'><i class='icon-minus'></i></button>");
+					var $unit_plus = $("<button type='button' class='btn'><i class='icon-plus'></i></button>");
 
 					$input.data("max", max);
 					$unit_minus.data("m", -1);
