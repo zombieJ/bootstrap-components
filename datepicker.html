@@ -17,8 +17,6 @@
 		<script>
 			$(document).ready(function(){
 				$("#sidebar").floater({after: "#navbar", margin: 20, collapse: true});
-
-				$("#datepicker").datepicker();
 			});
 		</script>
 	</head>
@@ -68,26 +66,21 @@
 						<p>Datepicker is used for input element which need date type input. When user focus on the element, a datepicker component will popup for user use.</p>
 						<div class="bs-docs-example" style="background-color: #f5f5f5;">
 							<div id="datepicker" class="input-append">
-								<input class="datepicker" id="appendedInput" type="text" style="width: 140px;">
-								<button class="btn" data-toggle="datepicker" href="#"><i class="icon-calendar"></i></button>
+								<input id="appendedInput" type="text" style="width: 140px;">
+								<button class="btn" data-toggle="datepicker" data-to="#appendedInput"><i class="icon-calendar"></i></button>
 							</div>
 						</div>
 
 						<h2 id="h_usage">Usage</h2>
-						<p>Enable darklight via JavaScript:</p>
+						<p>Enable datepick via attr <code>data-toggle="datepicker"</code>:</p>
 						<pre>
-$("#element").datepicker();
-</pre>
-						<p>When it's called datepicker, it will find the sub element which contains class 'datapicker' as input/output element and find sub element which contains attribute [data-toggle='datepicker'] as trigger:</p>
-<pre>
-&lt;div id="datepicker" class="input-append"&gt;
-	&lt;input <strong class='highlight'>class="datepicker"</strong> id="appendedInput" type="text" style="width: 140px;"&gt;
-	&lt;button class="btn" <strong class='highlight'>data-toggle="datepicker"</strong> href="#"&gt;&lt;i class="icon-calendar"&gt;&lt;/i&gt;&lt;/button&gt;
-&lt;/div&gt;
+&lt;button class="btn" <strong class='highlight'>data-toggle="datepicker"</strong>&gt;
+	&lt;i class="icon-calendar"&gt;&lt;/i&gt;
+&lt;/button&gt;
 </pre>
 
 						<h3 id="h_options">Options</h3>
-						<p>Options should be passed via JavaScript.</p>
+						<p>Append the option name to <code>data-</code>, as in <code>data-type</code>.</p>
 						<table class="table table-bordered table-striped">
 							<thead>
 								<tr>
@@ -99,7 +92,7 @@ $("#element").datepicker();
 							</thead>
 							<tbody>
 								<tr>
-									<td>target</td>
+									<td>type</td>
 									<td>string</td>
 									<td>all</td>
 									<td>
@@ -109,11 +102,11 @@ $("#element").datepicker();
 									</td>
 								</tr>
 								<tr>
-									<td>date</td>
-									<td>Date</td>
+									<td>to</td>
+									<td>string</td>
 									<td></td>
 									<td>
-										To set date time. Default date time is now.
+										Set the target input element. When user change the date, the value of target input element will also be changed.
 									</td>
 								</tr>
 							</tbody>
@@ -130,7 +123,9 @@ $("#element").datepicker();
 							<tbody>
 								<tr>
 									<td>change</td>
-									<td>It will trigger when datepicker change its value.</td>
+									<td>
+										It will trigger when datepicker change its value. When <code>data-ato</code> is setted, change event will trigger with target element.
+									</td>
 								</tr>
 							</tbody>
 						</table>
