@@ -19,4 +19,6 @@
 .fileuploader .fileuploader-items .fileuploader-item button.close {
 	float: none;
 	margin-right: 5px;
+	font-size: 16px;
+	margin-top: -3px;
 }

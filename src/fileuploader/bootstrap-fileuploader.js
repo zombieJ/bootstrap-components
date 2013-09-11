@@ -128,7 +128,7 @@ $.fn.extend({
 		function addFileMark($input) {
 			var filename = getFilename($input.val());
 			var $div_file = $("<div class='fileuploader-item'>");
-			var $rm = $("<button class='close' type='button'>&times;</button>");
+			var $rm = $("<button class='close' type='button'>x</button>");
 			var $filename = $("<span class='tips'>");
 
 			var has = false;
