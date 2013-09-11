@@ -38,7 +38,7 @@ $.extend({
 		$modal.append($footer);
 
 		// title
-		var $close = $('<button type="button" class="close" data-dismiss="modal" aria-hidden="true">¡Á</button>');
+		var $close = $('<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>');
 		if(!_close) $close.css("visibility", "hidden");
 
 		$header.append($close);

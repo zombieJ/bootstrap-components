@@ -11,7 +11,7 @@
 .notification-body button.close {
 	position: absolute;
 	right: 7px;
-	top: 7px;
+	top: 3px;
 }
 
 .notification-body h5 {

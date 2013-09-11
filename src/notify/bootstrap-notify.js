@@ -39,7 +39,7 @@ $.extend({
 		var _tt = null;
 
 		var $notification = $("<div class='alert notification-body'>");
-		var $btn = $("<button type='button' class='close'>¡Á</button>");
+		var $btn = $("<button type='button' class='close'>x</button>");
 
 		// get the notification list for region
 		if(_region != "") {
