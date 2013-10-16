@@ -45,12 +45,25 @@
 						$("#dlg_confirm_tips").html("You select: "+ret);
 					});
 				});
+
+				// dialog - confirm not close
+				$("#dlg_confirm_notClose").click(function(){
+					$.dialog({
+						title: "Comfirm",
+						content: "Click cancel will not close window.",
+						confirm: true,
+					}, function(ret){
+						return ret;
+					});
+				});
 			});
 		</script>
 		<!-- Button to trigger modal -->
 		<a id="dlg" class="btn">alert</a>
 		<a id="dlg_confirm" class="btn">confirm</a>
 		<span id="dlg_confirm_tips"></span>
+		<br /><br />
+		<a id="dlg_confirm_notClose" class="btn">confirm - Click cancel not close dialog</a>
 
 		<div id="sample" class="hide">
 			<div>

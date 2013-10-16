@@ -79,11 +79,13 @@ $.extend({
 		// begin hide window, return callback
 		$modal.on('hide', function () {
 			if(_callback != null) {
+				var ret;
 				if(_ret != null) {
-					_callback.call($modal, _ret);
+					ret = _callback.call($modal, _ret);
 				} else {
-					_callback.call($modal, false);
+					ret = _callback.call($modal, false);
 				}
+				return ret;
 			}
 		});
 
