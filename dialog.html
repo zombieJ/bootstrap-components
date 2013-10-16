@@ -144,8 +144,9 @@ $.dialog(options, callback);
 								<tr>
 									<td>callback</td>
 									<td>
-										It will trigger event when user close this dialog by click the return button.
-										return boolean of confirm, and <code>false</code> of alert and close button.
+										It will trigger event when user close this dialog.
+										Parameter return <code>true</code> if click <code>confirm button</code> in confirm dialog, else return <code>false</code>.
+										You can return <code>false</code> to avoid dialog close.
 									</td>
 								</tr>
 							</tbody>
