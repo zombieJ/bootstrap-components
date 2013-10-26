@@ -1,4 +1,4 @@
-# [Bootstrap-Components](http://deadpeople.github.io/bootstrap-components)
+# [Bootstrap-Components](http://zombiej.github.io/bootstrap-components)
 
 This is design for additional component in Bootstrap.
 
